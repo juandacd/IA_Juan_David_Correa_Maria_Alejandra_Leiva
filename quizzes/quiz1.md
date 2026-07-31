@@ -84,11 +84,11 @@ Justificación: Su objetivo es generar una imagen que cumpla con la descripción
 
 Después de las presentaciones, discutiremos preguntas como:
 
--   ¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno? si
--   ¿Es posible saber con certeza qué tipo de agente implementa un Space
-    únicamente observándolo? no
--   ¿Qué diferencia existe entre el comportamiento observable de un
-    agente y su implementación interna? los recursos o informacion adicional que use el agente
+-   **¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno?** Sí, diferentes Spaces pueden tener el mismo tipo de entorno aunque realicen tareas distintas.
+-   **¿Es posible saber con certeza qué tipo de agente implementa un Space
+    únicamente observándolo?** No, porque la implementación interna no siempre es visible desde la interfaz.
+-   **¿Qué diferencia existe entre el comportamiento observable de un
+    agente y su implementación interna?** El comportamiento observable es lo que el agente hace, mientras que la implementación interna es cómo está programado para hacerlo.
 
 ------------------------------------------------------------------------
 
