@@ -49,7 +49,7 @@ Genera una imagen a partir de un prompt escrito por el usuario. También permite
   **Performance**   ¿Qué significa que el agente haga bien su trabajo?
                      Generar una imagen que represente correctamente el prompt del usuario, con buena calidad y en poco tiempo.
   **Environment**   ¿Con qué interactúa el agente?
-                    Interactúa con el usuario y con los parámetros de generación de imágenes (prompt, ancho, alto, semilla e inference steps).
+                    El usuario, el prompt y los parámetros de generación (ancho, alto, semilla e inference steps).
   **Actuators**     ¿Qué acciones produce?
                     Genera y muestra una imagen según la información recibida.
   **Sensors**       ¿Qué información recibe como entrada?
@@ -63,21 +63,20 @@ Complete la siguiente tabla y justifique brevemente cada respuesta.
 
   Propiedad      Clasificación     Justificación
   -------------- ----------------- ---------------
-  Observable     Total               el agente tiene acceso total a la informacion proporcionada y al entorno
-  Determinista   No                   Los modelos generativos utilizados para editar imágenes incluyen procesos probabilísticos, por lo cual no genera siempre las                                       mismas repuestas
-  Episódico      No           no se mueve ni cambia con los prcesos anteriores
-  Estático       Sí           no se ve afectado por escritos anteriores
-  Discreto       No           como son imagenes y videos credos se representa mediante valores continuos
-  Conocido       Sí           
+  **Observable**     Sí            Recibe toda la información necesaria (prompt y parámetros) para generar la imagen.
+  **Determinista**   No           En cada prompt, semilla y parámetros diferentes, se generan diferentes imagenes.
+  **Episódico**      Sí           Cada generación de imagen es independiente de las anteriores.
+  **Estático**       Sí           El entorno no cambia mientras el agente genera la imagen.
+  **Discreto**       Sí           Cada solicitud de generación es un evento independiente con una salida específica.
+  **Un agente**      Sí           Solo interviene el agente generador de imágenes para realizar la tarea.
+  **Conocido**       Sí           El agente conoce cómo procesar las entradas para generar la imagen.
 
 ------------------------------------------------------------------------
 
 ## 5. ¿Qué tipo de programa de agente creen que es?
 
-Seleccione la opción que consideren más adecuada y explique por qué.
--   Agente basado en objetivos: se base en cumplir el prompt realizado por el usuario
-  
--   Agente con aprendizaje: ya que de lo escrito y quejas realiza mejores resultados, aunque me entra la duda que no usa resultados de prompt anteriores
+**Agente basado en objetivos**.
+Justificación: Su objetivo es generar una imagen que cumpla con la descripción y los parámetros proporcionados por el usuario.
 
 ------------------------------------------------------------------------
 
