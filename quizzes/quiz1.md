@@ -1,5 +1,5 @@
 # Actividad de Clase: Analizando Agentes de IA con Hugging Face Spaces
-
+Maria Alejandra Leiva y Juan David Correa
 ## Objetivo
 
 Explorar aplicaciones reales de Inteligencia Artificial en **Hugging
