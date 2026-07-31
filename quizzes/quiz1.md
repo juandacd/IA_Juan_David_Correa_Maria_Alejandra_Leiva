@@ -16,7 +16,7 @@ Al finalizar la actividad, los estudiantes deberán ser capaces de:
 
 ------------------------------------------------------------------------
 
-## Instrucciones
+## Instrucciones AQUI
 
 1.  Ingresen a **https://huggingface.co/spaces**.
 2.  Exploren diferentes Spaces.
