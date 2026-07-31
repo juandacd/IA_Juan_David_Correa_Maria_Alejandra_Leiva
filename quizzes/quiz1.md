@@ -38,7 +38,7 @@ Al finalizar la actividad, los estudiantes deberán ser capaces de:
 
 ## 2. ¿Qué hace el agente?
 
-Modifica las imagenes cargadas segun las intrucciones escritas, generando nuevas imagenes o videos
+Genera una imagen a partir de un prompt escrito por el usuario. También permite ajustar parámetros como ancho, alto, semilla e inference steps.
 
 ------------------------------------------------------------------------
 
@@ -47,13 +47,13 @@ Modifica las imagenes cargadas segun las intrucciones escritas, generando nuevas
   Elemento          Respuesta
   ----------------- ----------------------------------------------------
   **Performance**   ¿Qué significa que el agente haga bien su trabajo?
-                      Realize de forma correcta los cambios y propuestas sugeridas por el usuario generando de forma correcta la imagen o video propuesto usando                         la imagen cargada
+                     Generar una imagen que represente correctamente el prompt del usuario, con buena calidad y en poco tiempo.
   **Environment**   ¿Con qué interactúa el agente?
-                    interactua virtualmente con el usuario y la imagen cargada
+                    Interactúa con el usuario y con los parámetros de generación de imágenes (prompt, ancho, alto, semilla e inference steps).
   **Actuators**     ¿Qué acciones produce?
-                    crea una imagen o video segun las condiciones del usauario y la imagen proporcionada
+                    Genera y muestra una imagen según la información recibida.
   **Sensors**       ¿Qué información recibe como entrada?
-                      Recibe una imagen y un prompt
+                     Recibe el prompt del usuario y los parámetros de generación: ancho, alto, semilla e inference steps.
 
 ------------------------------------------------------------------------
 
