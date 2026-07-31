@@ -30,9 +30,9 @@ Al finalizar la actividad, los estudiantes deberán ser capaces de:
 
 ## 1. Nombre del Space
 
-**Nombre:** Omni image editor
+**Nombre:** Z-Image-Turbo
 
-**Enlace:** **https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor**
+**Enlace:** **https://huggingface.co/spaces/mrfakename/Z-Image-Turbo**
 
 ------------------------------------------------------------------------
 
