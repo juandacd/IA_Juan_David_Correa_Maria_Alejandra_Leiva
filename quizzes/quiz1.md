@@ -63,13 +63,13 @@ Complete la siguiente tabla y justifique brevemente cada respuesta.
 
   Propiedad      Clasificación     Justificación
   -------------- ----------------- ---------------
-  **Observable**     Sí            Recibe toda la información necesaria (prompt y parámetros) para generar la imagen.
-  **Determinista**   No           En cada prompt, semilla y parámetros diferentes, se generan diferentes imagenes.
-  **Episódico**      Sí           Cada generación de imagen es independiente de las anteriores.
-  **Estático**       Sí           El entorno no cambia mientras el agente genera la imagen.
-  **Discreto**       Sí           Cada solicitud de generación es un evento independiente con una salida específica.
-  **Un agente**      Sí           Solo interviene el agente generador de imágenes para realizar la tarea.
-  **Conocido**       Sí           El agente conoce cómo procesar las entradas para generar la imagen.
+  **Observable**     Sí.           Recibe toda la información necesaria (prompt y parámetros) para generar la imagen.
+  **Determinista**   No.           Con cada prompt, semilla y parámetros diferentes, se generan diferentes imagenes.
+  **Episódico**      Sí.           Cada generación de imagen es independiente de las anteriores.
+  **Estático**       Sí.           El entorno no cambia mientras el agente genera la imagen.
+  **Discreto**       Sí.           Cada solicitud de generación es un evento independiente con una salida específica.
+  **Un agente**      Sí.           Solo interviene el agente generador de imágenes para realizar la tarea.
+  **Conocido**       Sí.           El agente conoce cómo procesar las entradas para generar la imagen.
 
 ------------------------------------------------------------------------
 
