@@ -96,15 +96,14 @@ Después de las presentaciones, discutiremos preguntas como:
 
 Encuentre un Space que pueda clasificarse como:
 
-1.  **Totalmente observable, determinista y episódico.**: MNIST Digit Classifier                                                                                   Totalmente observable: la imagen completa del dígito es visible para el agente.
-Determinista: para una misma imagen y un mismo modelo, el resultado siempre es el mismo.
-Episódico: cada clasificación de una imagen es independiente de las anteriores; no existe memoria entre episodios.
-2.  **Parcialmente observable, estocástico y secuencial.**: Text Adventure (LLM Game)
-Parcialmente observable: el agente solo conoce la descripción textual del estado actual, no el estado completo del mundo.
-Estocástico: las respuestas del modelo de lenguaje pueden variar incluso ante la misma acción, introduciendo incertidumbre.
-Secuencial: cada decisión afecta el estado futuro del juego y las opciones disponibles.
-
-
+1.  **Totalmente observable, determinista y episódico.**: MNIST Digit Classifier
+**Totalmente observable**: Recibe la imagen completa del dígito para clasificarla.
+**Determinista**: La misma imagen siempre produce la misma clasificación.
+**Episódico**: Cada clasificación es independiente de las anteriores.
+3.  **Parcialmente observable, estocástico y secuencial.**: Text Adventure
+**Parcialmente observable:** El agente solo conoce la información que el jugador ha revelado durante la partida.
+**Estocástico**: Las respuestas pueden cambiar aunque el jugador escriba el mismo comando.
+**Secuencial**: Cada acción afecta el estado del juego y las decisiones futuras.
 ------------------------------------------------------------------------
 
 # Rúbrica (10 puntos)
