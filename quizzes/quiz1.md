@@ -1,5 +1,5 @@
 # Actividad de Clase: Analizando Agentes de IA con Hugging Face Spaces
-
+Maria Alejandra Leiva y Juan David Correa
 ## Objetivo
 
 Explorar aplicaciones reales de Inteligencia Artificial en **Hugging
@@ -16,7 +16,7 @@ Al finalizar la actividad, los estudiantes deberán ser capaces de:
 
 ------------------------------------------------------------------------
 
-## Instrucciones
+## Instrucciones 
 
 1.  Ingresen a **https://huggingface.co/spaces**.
 2.  Exploren diferentes Spaces.
@@ -30,15 +30,15 @@ Al finalizar la actividad, los estudiantes deberán ser capaces de:
 
 ## 1. Nombre del Space
 
-**Nombre:** Omni image editor
+**Nombre:** Z-Image-Turbo
 
-**Enlace:** **https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor**
+**Enlace:** **https://huggingface.co/spaces/mrfakename/Z-Image-Turbo**
 
 ------------------------------------------------------------------------
 
 ## 2. ¿Qué hace el agente?
 
-Modifica las imagenes cargadas segun las intrucciones escritas, generando nuevas imagenes o videos
+Genera una imagen a partir de un prompt escrito por el usuario. También permite ajustar parámetros como ancho, alto, semilla e inference steps.
 
 ------------------------------------------------------------------------
 
@@ -47,13 +47,13 @@ Modifica las imagenes cargadas segun las intrucciones escritas, generando nuevas
   Elemento          Respuesta
   ----------------- ----------------------------------------------------
   **Performance**   ¿Qué significa que el agente haga bien su trabajo?
-                      Realize de forma correcta los cambios y propuestas sugeridas por el usuario generando de forma correcta la imagen o video propuesto usando                         la imagen cargada
+                     Generar una imagen que represente correctamente el prompt del usuario, con buena calidad y en poco tiempo.
   **Environment**   ¿Con qué interactúa el agente?
-                    interactua virtualmente con el usuario y la imagen cargada
+                    El usuario, el prompt y los parámetros de generación (ancho, alto, semilla e inference steps).
   **Actuators**     ¿Qué acciones produce?
-                    crea una imagen o video segun las condiciones del usauario y la imagen proporcionada
+                    Genera y muestra una imagen según la información recibida.
   **Sensors**       ¿Qué información recibe como entrada?
-                      Recibe una imagen y un prompt
+                     Recibe el prompt del usuario y los parámetros de generación: ancho, alto, semilla e inference steps.
 
 ------------------------------------------------------------------------
 
@@ -63,21 +63,20 @@ Complete la siguiente tabla y justifique brevemente cada respuesta.
 
   Propiedad      Clasificación     Justificación
   -------------- ----------------- ---------------
-  Observable     Total               el agente tiene acceso total a la informacion proporcionada y al entorno
-  Determinista   No                   Los modelos generativos utilizados para editar imágenes incluyen procesos probabilísticos, por lo cual no genera siempre las                                       mismas repuestas
-  Episódico      No           no se mueve ni cambia con los prcesos anteriores
-  Estático       Sí           no se ve afectado por escritos anteriores
-  Discreto       No           como son imagenes y videos credos se representa mediante valores continuos
-  Conocido       Sí           
+  **Observable**     Sí.           Recibe toda la información necesaria (prompt y parámetros) para generar la imagen.
+  **Determinista**   No.           Con cada prompt, semilla y parámetros diferentes, se generan diferentes imagenes.
+  **Episódico**      Sí.           Cada generación de imagen es independiente de las anteriores.
+  **Estático**       Sí.           El entorno no cambia mientras el agente genera la imagen.
+  **Discreto**       Sí.           Cada solicitud de generación es un evento independiente con una salida específica.
+  **Un agente**      Sí.           Solo interviene el agente generador de imágenes para realizar la tarea.
+  **Conocido**       Sí.           El agente conoce cómo procesar las entradas para generar la imagen.
 
 ------------------------------------------------------------------------
 
 ## 5. ¿Qué tipo de programa de agente creen que es?
 
-Seleccione la opción que consideren más adecuada y explique por qué.
--   Agente basado en objetivos: se base en cumplir el prompt realizado por el usuario
-  
--   Agente con aprendizaje: ya que de lo escrito y quejas realiza mejores resultados, aunque me entra la duda que no usa resultados de prompt anteriores
+**Agente basado en objetivos**.
+Justificación: Su objetivo es generar una imagen que cumpla con la descripción y los parámetros proporcionados por el usuario.
 
 ------------------------------------------------------------------------
 
@@ -85,11 +84,11 @@ Seleccione la opción que consideren más adecuada y explique por qué.
 
 Después de las presentaciones, discutiremos preguntas como:
 
--   ¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno? si
--   ¿Es posible saber con certeza qué tipo de agente implementa un Space
-    únicamente observándolo? no
--   ¿Qué diferencia existe entre el comportamiento observable de un
-    agente y su implementación interna? los recursos o informacion adicional que use el agente
+-   **¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno?** Sí, diferentes Spaces pueden tener el mismo tipo de entorno aunque realicen tareas distintas.
+-   **¿Es posible saber con certeza qué tipo de agente implementa un Space
+    únicamente observándolo?** No, porque la implementación interna no siempre es visible desde la interfaz.
+-   **¿Qué diferencia existe entre el comportamiento observable de un
+    agente y su implementación interna?** El comportamiento observable es lo que el agente hace, mientras que la implementación interna es cómo está programado para hacerlo.
 
 ------------------------------------------------------------------------
 
@@ -97,15 +96,14 @@ Después de las presentaciones, discutiremos preguntas como:
 
 Encuentre un Space que pueda clasificarse como:
 
-1.  **Totalmente observable, determinista y episódico.**: MNIST Digit Classifier                                                                                   Totalmente observable: la imagen completa del dígito es visible para el agente.
-Determinista: para una misma imagen y un mismo modelo, el resultado siempre es el mismo.
-Episódico: cada clasificación de una imagen es independiente de las anteriores; no existe memoria entre episodios.
-2.  **Parcialmente observable, estocástico y secuencial.**: Text Adventure (LLM Game)
-Parcialmente observable: el agente solo conoce la descripción textual del estado actual, no el estado completo del mundo.
-Estocástico: las respuestas del modelo de lenguaje pueden variar incluso ante la misma acción, introduciendo incertidumbre.
-Secuencial: cada decisión afecta el estado futuro del juego y las opciones disponibles.
-
-
+1.  **Totalmente observable, determinista y episódico.**: MNIST Digit Classifier
+**Totalmente observable**: Recibe la imagen completa del dígito para clasificarla.
+**Determinista**: La misma imagen siempre produce la misma clasificación.
+**Episódico**: Cada clasificación es independiente de las anteriores.
+3.  **Parcialmente observable, estocástico y secuencial.**: Text Adventure
+**Parcialmente observable:** El agente solo conoce la información que el jugador ha revelado durante la partida.
+**Estocástico**: Las respuestas pueden cambiar aunque el jugador escriba el mismo comando.
+**Secuencial**: Cada acción afecta el estado del juego y las decisiones futuras.
 ------------------------------------------------------------------------
 
 # Rúbrica (10 puntos)
