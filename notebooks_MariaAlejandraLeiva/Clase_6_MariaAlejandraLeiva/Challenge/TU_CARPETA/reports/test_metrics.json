@@ -1,0 +1,10 @@
+{
+  "model": "LogisticRegression",
+  "best_params": {
+    "model__C": 1
+  },
+  "test_accuracy": 0.9722222222222222,
+  "test_f1_macro": 0.9709618874773139,
+  "cv_accuracy_mean": 0.9790640394088669,
+  "n_test": 36
+}

@@ -1,0 +1,4 @@
+model,cv_roc_auc,best_params
+logistic_regression,0.9958720330237357,"{""classifier__C"": 1}"
+knn,0.9925180598555212,"{""classifier__n_neighbors"": 11, ""classifier__weights"": ""distance""}"
+decision_tree,0.9638802889576883,"{""classifier__criterion"": ""entropy"", ""classifier__max_depth"": 4, ""classifier__min_samples_split"": 20}"

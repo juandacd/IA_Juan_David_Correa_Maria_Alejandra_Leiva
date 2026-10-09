@@ -1,0 +1,9 @@
+{
+  "champion": "logistic_regression",
+  "selection_metric": "roc_auc",
+  "cv_folds": 5,
+  "cv_score": 0.9958720330237357,
+  "best_params": {
+    "classifier__C": 1
+  }
+}
