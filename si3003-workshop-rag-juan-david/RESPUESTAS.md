@@ -123,7 +123,17 @@ Traduje Q1, Q3 y Q4 al español y comparé con la versión en inglés usando el 
 
 **Cómo lo comprobaría:** compararía los scores de similitud de la misma pregunta en ambos idiomas (con `similarity_search_with_score`) y miraría si el orden de los chunks cambia. Si el score cae mucho en español, la hipótesis sobre el modelo multilingüe no se sostiene del todo.
 
-### B5 · Quiz propio (pendiente)
+### B5 · Quiz propio
+
+Escribí tres preguntas con ground truth y sección del paper. La tercera exige combinar los dos papers.
+
+| Pregunta | Ground truth (sección) | Respuesta del RAG | ¿Correcta? | ¿Contexto del paper correcto? |
+|---|---|---|---|---|
+| Q6 · ¿Cuántas capas tiene el encoder del Transformer base? | 6 capas idénticas, N = 6 (sección 3.1 de Attention) | 6 capas (N = 6) | sí | sí (Attention) |
+| Q7 · ¿Qué retriever usa RAG para buscar documentos? | DPR, retriever denso preentrenado (sección 2 de RAG) | DPR | sí | sí (RAG) |
+| Q8 · ¿Qué generador usa RAG y en qué arquitectura se basa el paper de Attention? | BART, seq2seq Transformer; el Transformer (requiere ambos papers) | Respuesta vacía | no | parcial: solo RAG; falta Attention |
+
+**Observación:** la pregunta combinada no tuvo respuesta porque el retriever solo recuperó chunks de `rag_paper.pdf`. Una consulta de una sola frase se orienta hacia el tema más cercano y el paper de Attention quedó fuera del top 5. Propuesta sin probar: dividir la pregunta en dos consultas, una por paper, y comparar.
 
 ---
 
