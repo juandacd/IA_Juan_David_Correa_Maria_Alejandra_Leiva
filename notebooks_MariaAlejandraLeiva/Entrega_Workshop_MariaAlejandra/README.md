@@ -177,6 +177,24 @@ Los scores ayudan a distinguir las fuentes más relacionadas con la pregunta, pe
 
 Ver imagen A4_scores.
 
-## Decisiones y aprendizajes
+## Reflexión
 
-Escribe 5 a 8 líneas sobre lo más importante que descubriste hoy.
+### 1. ¿Qué ocurrió cuando el contexto no contenía información suficiente? ¿El modelo reconoció la limitación o inventó?
+
+En las pruebas sobre el salario mensual del gerente general y la empresa de seguros médicos de NovaTech, el modelo respondió: «No encuentro esa información en los documentos». Esto muestra que, con el prompt de A3, reconoció que no tenía información suficiente para responder y no inventó datos específicos. Sin embargo, en A4 las fuentes recuperadas para esas preguntas obtuvieron scores de hasta 0.3591 y 0.3710, respectivamente, lo que demuestra que recuperar documentos similares no garantiza que estos contengan la respuesta.
+
+### 2. ¿Qué fragmentos se recuperaron para la pregunta bonus? ¿Aparecieron ambos papers?
+
+**[Completar con los resultados del notebook 03.]** Para responder esta pregunta es necesario revisar cuál fue la pregunta bonus, qué fragmentos recuperó el sistema y cuáles eran los dos papers esperados. Con esos resultados se podrá determinar si aparecieron ambos papers y si los fragmentos recuperados contenían información relevante para responder.
+
+### 3. ¿Qué efecto tuvo modificar `chunk_size`, `chunk_overlap`, `k` o `score_threshold`?
+
+En A4 observé que las fuentes correctas de las tres preguntas respondibles obtuvieron scores de 0.4210, 0.4530 y 0.6239. Por otro lado, las dos preguntas fuera de contexto recuperaron fuentes con scores máximos de 0.3591 y 0.3710, aunque esas fuentes no respondían las preguntas. Por esta razón, propuse aumentar `score_threshold` de 0.30 a 0.40 para filtrar recuperaciones menos relevantes; este valor es una propuesta basada en las cinco pruebas y necesita validarse con más preguntas. Los experimentos realizados no permiten afirmar que haya medido directamente el efecto de cambiar `chunk_size`, `chunk_overlap` o `k`.
+
+### 4. ¿Por qué conviene separar el modelo de embeddings del modelo generativo?
+
+El modelo de embeddings convierte las preguntas y los fragmentos de los documentos en representaciones vectoriales que permiten buscar información semánticamente relacionada. El modelo generativo utiliza la pregunta y el contexto recuperado para construir una respuesta en lenguaje natural. Separarlos permite elegir o cambiar cada modelo según su función, evaluar la recuperación y la generación por separado y buscar un equilibrio entre calidad, velocidad y costo.
+
+### 5. ¿Qué cambiarías para llevar este prototipo a producción? Considera persistencia, control de acceso, evaluación, observabilidad y costos.
+
+Para llevar el prototipo a producción, utilizaría una base vectorial persistente para conservar los documentos indexados entre sesiones y establecería controles de acceso para evitar que cada usuario consulte información no autorizada. También crearía un conjunto de preguntas de evaluación con respuestas esperadas para medir la calidad de la recuperación, la precisión de las respuestas y la capacidad del sistema para reconocer preguntas fuera de contexto. Finalmente, registraría métricas de latencia, errores, uso de tokens y costos, protegería las claves de API y establecería límites de uso para mantener la aplicación segura y sostenible.
