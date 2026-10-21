@@ -89,7 +89,7 @@ Esto conecta con Qdrant (y Weaviate) porque `IndexFlatIP` no tiene borrado y la 
 
 ## Bloque A · App RAG empresarial
 
-## A1
+### A1
 
 Tabla de 5 preguntas con respuesta y fuentes:
 
