@@ -9,7 +9,7 @@
  
 ### T1 · Nodos por capa
  
-P(l ≥ k) = P(U ≤ e^(−k·ln M)) = M^(−k). Con M = 16 y N = 10⁶:
+P(l ≥ k) = P(U ≤ e^(−k·ln M)) = M^(−k). Para M = 16 y N = 10⁶:
  
 - Capa ≥ 1: 10⁶ / 16 = **62.500**
 
@@ -17,15 +17,15 @@ P(l ≥ k) = P(U ≤ e^(−k·ln M)) = M^(−k). Con M = 16 y N = 10⁶:
 
 - Capa ≥ 3: 10⁶ / 4096 ≈ **244**
  
-La simulación realizada en el código dio los mismo resultados.
+Los resultados obtenidos en la simulación del código coincidieron con estos valores.
  
 ### T2 · ef, k y la cola
  
-1. Con `k=10` y `ef=5`, la cola solo guarda 5 candidatos, así que es imposible devolver 10 vecinos. Siempre debe cumplirse `ef ≥ k`.
+1. Si `k=10` y `ef=5`, la cola solo puede almacenar 5 candidatos, por lo que no es posible devolver 10 vecinos. Por tanto, siempre debe cumplirse `ef ≥ k`.
 
-2. Se empieza con `ef = 2·k` (o 50–100 para RAG con k de 5 a 10) y se sube si el recall es insuficiente.
+2. Se puede empezar con `ef = 2·k` (o con valores entre 50 y 100 para RAG cuando k está entre 5 y 10) y aumentarlo si el recall es insuficiente.
 
-3. `ef`, porque es un parámetro de consulta y no cambia el grafo. `ef_construction` solo actúa al insertar, así que cambiarlo exige reconstruir el índice.
+3. Es preferible ajustar `ef`, ya que es un parámetro de búsqueda que no modifica el grafo. Por el contrario, `ef_construction` interviene durante la inserción, así que cambiarlo requiere reconstruir el índice.
  
 ### T3 · Inserción frente a búsqueda
  
@@ -33,15 +33,15 @@ La simulación realizada en el código dio los mismo resultados.
 
 |---|---|---|
 
-| ¿Se sortea la capa? | **Sí.** Hay que decidir hasta qué capa vivirá el nodo nuevo; el azar evita depender del orden de inserción. | **No.** No hay nodo nuevo que ubicar; se entra siempre por la capa más alta desde el nodo de entrada guardado. |
+| ¿Se sortea la capa? | **Sí.** Se determina aleatoriamente la capa máxima del nuevo nodo, de modo que su ubicación no dependa del orden de inserción. | **No.** No se incorpora ningún nodo nuevo; la búsqueda comienza en la capa más alta utilizando el nodo de entrada almacenado. |
 
-| ef en capas altas | **ef = 1**, de la capa más alta hasta l+1. Solo se busca una buena zona de entrada. | **ef = 1**, de la capa más alta hasta la 1. Es una aproximación gruesa y barata. |
+| ef en capas altas | **ef = 1**, desde la capa más alta hasta l+1. Se busca una buena zona inicial. | **ef = 1**, desde la capa más alta hasta la capa 1. Se realiza una búsqueda aproximada y económica. |
 
-| Parámetro de la fase principal | **ef_construction**, de la capa l a la 0. Más candidatos dan mejores conexiones. | **ef** en la capa 0. Más candidatos dan más recall y más latencia. |
+| Parámetro de la fase principal | **ef_construction**, desde la capa l hasta la 0. Evaluar más candidatos permite crear conexiones de mayor calidad. | **ef** en la capa 0. Un valor mayor puede aumentar el recall, pero también la latencia. |
 
-| ¿Modifica el índice? | **Sí.** Crea aristas bidireccionales y poda las más débiles. | **No.** Solo lee el grafo y devuelve los k más cercanos. |
+| ¿Modifica el índice? | **Sí.** Se crean conexiones bidireccionales y se eliminan las menos relevantes mediante poda. | **No.** Solo se consulta el grafo y se devuelven los k vecinos más cercanos. |
  
-En el notebook 03, `vectorstore.add_documents(...)` dispara la **inserción** y `retriever.invoke(...)` dispara la **búsqueda**.
+En el notebook 03, `vectorstore.add_documents(...)` inicia la **inserción**, mientras que `retriever.invoke(...)` ejecuta la **búsqueda**.
  
 ### T4 · El invariante de FAISSVectorStore
  
@@ -57,26 +57,25 @@ En el notebook 03, `vectorstore.add_documents(...)` dispara la **inserción** y 
 
 | 3 | vector D | D | *(no existe)* |
  
-La búsqueda que antes daba `[1, 2, 3]` (B, C, D) ahora resuelve así:
+Antes, la búsqueda devolvía `[1, 2, 3]` (B, C, D). Después de eliminar B, los índices se interpretan así:
+ 
+- idx 1 → `documents[1]` = **C**, aunque debería ser B.
 
-- idx 1 → `documents[1]` = **C**. Debía ser B.
-
-- idx 2 → `documents[2]` = **D**. Debía ser C.
+- idx 2 → `documents[2]` = **D**, aunque debería ser C.
 
 - idx 3 → `documents[3]` → **IndexError**.
  
-Los dos primeros son errores **silenciosos**: el score corresponde al vector de B, pero el texto mostrado es el de C. Solo el tercero lanza una excepción.
+Los dos primeros casos producen errores **silenciosos**: el score corresponde al vector de B, pero el texto mostrado es el de C. En cambio, el tercer caso genera una excepción.
  
-Esto conecta con Qdrant (y Weaviate) porque `IndexFlatIP` no tiene borrado y la lista paralela se desincroniza. Las bases vectoriales gestionan las mutaciones de forma nativa y guardan la metadata junto al vector.
+Este problema se relaciona con Qdrant y Weaviate porque `IndexFlatIP` no admite el borrado y la lista paralela puede quedar desincronizada. Las bases de datos vectoriales gestionan las modificaciones de forma nativa y almacenan la metadata junto al vector.
  
 ### T5 · Costo de la fuerza bruta
  
-1. 768 × 10⁶ multiplicaciones × 100 consultas/s = **7,68 × 10¹⁰ mult/s**, unos 77 mil millones por segundo.
+1. Con 768 × 10⁶ multiplicaciones por consulta y 100 consultas por segundo, se requieren **7,68 × 10¹⁰ mult/s**, aproximadamente 77 mil millones de multiplicaciones por segundo.
 
-2. Eso es solo aritmética. Además hay que leer 10⁶ × 768 × 4 B ≈ 3 GB por consulta, unos 300 GB/s de ancho de banda a 100 consultas/s. El costo crece linealmente con N, así que ser exacto no escala. (El dato de memoria es un cálculo mío; verifícalo antes de incluirlo.)
+2. Este cálculo considera únicamente las operaciones aritméticas. También se deben leer 10⁶ × 768 × 4 B ≈ 3 GB por consulta, lo que representa un ancho de banda aproximado de 300 GB/s para 100 consultas por segundo. El costo aumenta linealmente con N, por lo que una búsqueda exacta no escala bien. *(El cálculo de memoria es una estimación propia y debe verificarse antes de incluirlo.)*
 
-3. En ANN se sacrifica la garantía de exactitud, con un recall típico de ~95 % o más, y se gana latencia de órdenes de magnitud, unas 10.000 veces más rápido según la presentación.
- 
+3. Los métodos ANN renuncian a garantizar una exactitud absoluta y pueden alcanzar un recall cercano al 95 % o superior, a cambio de reducir considerablemente la latencia. Según la presentación, pueden ser aproximadamente 10.000 veces más rápidos.
 
 ---
 
