@@ -133,13 +133,20 @@ Justificación de chunk_size y chunk_overlap: Se utilizó `chunk_size=400` y `ch
 
 Ver imagen A2_corpus.png
 
-## Cómo ejecutar mis notebooks
+###A 3
 
-1. Abre cada notebook de `notebooks/` en Google Colab.
-2. Crea el secreto `NVIDIA_API_KEY` en Colab (panel Secrets) con acceso para el notebook.
-3. Ejecuta las celdas en orden.
+| Pregunta | Antes del cambio | Después del cambio | Análisis |
+|---|---|---|---|
+| ¿Quién debe aprobar un descuento comercial del 15 %? | El gerente comercial. | El gerente comercial debe aprobar un descuento comercial del 15 %. [Política de descuentos comerciales] | La nueva respuesta conserva la información correcta e incorpora el título de la fuente entre corchetes, cumpliendo la instrucción de citar el documento utilizado. |
+| ¿Cuál es el salario mensual del gerente general de NovaTech? | No dispongo de esa información. El contexto proporcionado no contiene detalles sobre los salarios del personal de NovaTech. | No encuentro esa información en los documentos. | El modelo siguió la instrucción de responder exactamente con la frase establecida cuando la información no está disponible. Además, no inventó información. |
+| ¿Cuál es el horario de atención al cliente de NovaTech? | El horario de atención al cliente de NovaTech es de lunes a viernes, de 8:00 a. m. a 5:00 p. m., hora de Colombia. | El horario de atención al cliente de NovaTech es de lunes a viernes, de 8:00 a. m. a 5:00 p. m., hora de Colombia. [Horario de atención al cliente] | La información se mantuvo correcta y se añadió la cita de la fuente. La respuesta está en español y utiliza una sola oración, por lo que cumple el límite de extensión. |
 
-> No incluyas tu API key en ningún archivo de este repositorio.
+Conclusión:
+
+La instrucción que tuvo mayor efecto observable fue la de citar el título de la fuente entre corchetes, ya que las dos respuestas a preguntas respondibles incorporaron explícitamente el documento utilizado. También se observó un efecto claro en la pregunta fuera de contexto: el modelo utilizó exactamente la frase indicada en el nuevo prompt, en lugar de la explicación más extensa que producía anteriormente.
+
+En las tres respuestas evaluadas, el modelo no ignoró ninguna de las instrucciones principales: respondió en español, utilizó un máximo de tres oraciones y reconoció la ausencia de información cuando correspondía. Sin embargo, esta prueba no permite afirmar que nunca ignore las instrucciones en otras preguntas; solo muestra que las siguió en los tres casos evaluados.
+
 
 ## Decisiones y aprendizajes
 
