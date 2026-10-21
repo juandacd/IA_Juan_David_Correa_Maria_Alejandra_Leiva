@@ -190,6 +190,8 @@ Ver imagen A4_scores.
 | Q5. Cabezas de atención y dimensiones | Sí | Sí, `attention_paper.pdf` | Indicó 8 cabezas y dimensiones `d_k = d_v = 64` por cabeza. |
 | Bonus. Generador de RAG y arquitectura Transformer | Sí | Sí, aparecieron ambos papers | Se recuperaron cuatro fragmentos de `rag_paper.pdf` y uno de `attention_paper.pdf`. |
 
+Conclusión B1: el RAG obtuvo 5/5 aciertos en las preguntas principales y respondió correctamente la pregunta bonus. En la bonus sí aparecieron ambos papers, aunque la mayoría de los fragmentos recuperados pertenecía al artículo de RAG.
+
 ### B2
 
 | Experimento | Configuración | Número de chunks del índice | Aciertos |
@@ -204,12 +206,15 @@ Ver imagen A4_scores.
 | `score_threshold` | 0.25 | 150 | 5/5 |
 | `score_threshold` | 0.40 | 150 | 5/5 |
 
+En los experimentos realizados, el sistema obtuvo 5/5 aciertos con los tres valores de chunk_size, los tres valores de k y los umbrales de 0.15, 0.25 y 0.40. Sin embargo, el número de chunks del índice cambió de 412 con chunk_size=400 a 150 con chunk_size=900 y chunk_size=1500. Al aumentar k, se recuperaron más fragmentos, pero no mejoró el número de aciertos en estas cinco preguntas. Los umbrales de 0.15, 0.25 y 0.40 tampoco cambiaron los aciertos, aunque un experimento adicional con 0.80 redujo el resultado a 1/5. Esto sugiere que un umbral demasiado alto puede excluir información útil. Con los datos actuales conservaría chunk_size=900, overlap=120, k=5 y score_threshold=0.25 como configuración inicial, porque funcionó correctamente sin recuperar tantos fragmentos como k=8. No obstante, los cinco aciertos no demuestran que sea la mejor configuración para todas las preguntas; haría falta probar más consultas, especialmente preguntas difíciles y preguntas sin respuesta en los documentos.
+
 ### B3
 
 | Experimento | Configuración | Aciertos | Observación |
 |---|---|---:|---|
 | `score_threshold` | 0.80 | 1/5 | El umbral fue demasiado estricto y redujo la recuperación a un promedio de 0.4 fragmentos por pregunta. |
 
+En las tres preguntas trampa, el modelo reconoció que los fragmentos recuperados no contenían información suficiente para responder. No inventó una puntuación para ImageNet, un resultado BLEU de 2020 ni el autor del informe técnico de GPT-4. Las respuestas explicaron qué información faltaba y se mantuvieron dentro de los límites del contexto recuperado. Por tanto, en estas pruebas el RAG mostró un comportamiento adecuado frente a preguntas fuera del alcance de los papers. No fue necesario modificar el prompt porque las tres respuestas observadas ya reconocían la falta de evidencia. Aun así, convendría probar preguntas más ambiguas, ya que estas tres respuestas correctas no garantizan que el sistema siempre evite las alucinaciones.
 
 ### B4
 
@@ -218,3 +223,62 @@ Ver imagen A4_scores.
 | ¿Cuál fue la puntuación BLEU del Transformer grande en WMT 2014 inglés-alemán? | `attention_paper.pdf` | Sí | Respondió 28.4 BLEU. |
 | ¿Cuál es el propósito del factor de escala `sqrt(d_k)`? | `attention_paper.pdf` | Sí | Explicó el efecto de los productos punto grandes sobre la softmax y sus gradientes. |
 | ¿Qué dos variantes de RAG propone el paper y en qué se diferencian? | `rag_paper.pdf` | Sí | Diferenció RAG-Sequence de RAG-Token. |
+
+Hipótesis y cómo comprobarla
+Los resultados sugieren que el modelo de embeddings nvidia/nemotron-3-embed-1b pudo relacionar las preguntas en español con fragmentos relevantes de documentos escritos en inglés. Es posible que esto se deba a su capacidad para representar semánticamente textos en distintos idiomas, pero las ejecuciones por sí solas no demuestran cómo fue entrenado ni garantizan el mismo comportamiento en todos los idiomas.
+
+Para comprobarlo mejor, compararía cada pregunta en inglés con su traducción al español y registraría los fragmentos recuperados, el orden de las fuentes y la corrección de las respuestas. También probaría preguntas con vocabulario técnico y traducciones menos literales. En el notebook, las tres preguntas en español recuperaron el paper correcto y produjeron respuestas sustancialmente correctas.
+
+
+### B5
+
+El notebook ya tiene cinco preguntas de referencia, pero para este bloque necesitas añadir tres preguntas nuevas, sus respuestas esperadas y la sección del paper donde se encuentra cada respuesta. Una debe combinar información de ambos artículos.
+
+Estas tres propuestas se basan en los temas que aparecen en el notebook y en el ground truth existente. Las puedes agregar como una nueva sección de código.
+Pregunta nueva 1 — Attention Is All You Need
+Pregunta:
+Why does the Transformer use multi-head attention instead of a single attention function with full dimensionality?
+
+Ground truth:
+
+The Transformer uses multi-head attention to allow the model to attend to information from different representation subspaces at different positions. Instead of performing a single attention function with full dimensionality, it projects queries, keys, and values into multiple lower-dimensional spaces, applies attention in parallel, and combines the results.
+
+Sección: Attention Is All You Need, sección 3.2.2, “Multi-Head Attention”.
+Pregunta nueva 2 — Retrieval-Augmented Generation
+Pregunta:
+What is the role of the dense vector index in the RAG architecture?
+
+Ground truth:
+
+The dense vector index provides non-parametric memory by storing document representations that can be retrieved in response to an input query. A neural retriever identifies relevant documents, and the generator conditions on those documents to produce an answer. In the paper, the index is built from Wikipedia and accessed using the DPR retriever.
+
+Sección: Retrieval-Augmented Generation, secciones 1 y 2.
+Pregunta nueva 3 — combinación de ambos papers
+Pregunta:
+How are BART in the RAG paper and the Transformer architecture described in “Attention Is All You Need” related?
+
+Ground truth:
+
+The RAG paper uses BART-large as its sequence-to-sequence generator. It describes BART as a pretrained sequence-to-sequence Transformer, linking the generator used by RAG to the Transformer architecture discussed in “Attention Is All You Need”. RAG then conditions this generator on retrieved documents and the input query to produce its output.
+
+## Reflexión
+
+### 1. ¿Qué ocurrió cuando el contexto no contenía información suficiente? ¿El modelo reconoció la limitación o inventó una respuesta?
+
+En las tres preguntas trampa, el modelo reconoció que los fragmentos recuperados no contenían información suficiente para responder. Por ejemplo, ante la pregunta sobre la precisión de RAG en ImageNet, indicó que los documentos proporcionados no mencionaban esa tarea ni sus resultados. También evitó inventar una puntuación BLEU para WMT 2020 y un autor para el informe técnico de GPT-4. Esto demuestra que, en estas pruebas, el sistema fue capaz de reconocer sus limitaciones y responder de manera prudente.
+
+### 2. ¿Qué fragmentos se recuperaron para la pregunta bonus? ¿Aparecieron ambos papers?
+
+Para la pregunta bonus se recuperaron cinco fragmentos: cuatro del artículo *Retrieval-Augmented Generation* y uno de *Attention Is All You Need*. Por tanto, aparecieron ambos papers, aunque predominó el artículo de RAG. La respuesta identificó correctamente a BART como el generador utilizado por RAG y explicó que está basado en la arquitectura Transformer. Este experimento muestra cómo la recuperación de información de diferentes documentos puede ayudar a responder preguntas que relacionan conceptos de ambos artículos.
+
+### 3. ¿Qué efecto tuvo modificar `chunk_size`, `chunk_overlap`, `k` o `score_threshold`?
+
+Al cambiar `chunk_size`, el índice pasó de 412 chunks con un tamaño de 400 a 150 chunks con tamaños de 900 y 1500, mientras que las tres configuraciones obtuvieron 5/5 aciertos. Con el índice de 900, modificar `k` entre 3, 5 y 8 tampoco cambió los aciertos, aunque sí aumentó el número de fragmentos recuperados por pregunta. Los umbrales de 0.15, 0.25 y 0.40 mantuvieron los cinco aciertos, pero el experimento adicional con un umbral de 0.80 redujo el resultado a 1/5 y el promedio a 0.4 fragmentos por pregunta. Por estos resultados, conservaría inicialmente `chunk_size=900`, `overlap=120`, `k=5` y `score_threshold=0.25`, aunque probaría más preguntas antes de concluir que esta es la mejor configuración general.
+
+### 4. ¿Por qué conviene separar el modelo de embeddings del modelo generativo?
+
+El modelo de embeddings transforma los documentos y las preguntas en representaciones vectoriales que permiten recuperar fragmentos semánticamente relevantes. El modelo generativo utiliza la pregunta y el contexto recuperado para construir una respuesta en lenguaje natural. Separar ambos componentes permite evaluar y modificar la recuperación sin tener que cambiar necesariamente el generador, y viceversa. En este notebook, el sistema recuperó los papers adecuados para las preguntas principales y también respondió correctamente las tres preguntas formuladas en español, aunque los documentos estaban escritos en inglés.
+
+### 5. ¿Qué cambiarías para llevar este prototipo a producción?
+
+Primero, utilizaría una base de datos vectorial persistente para conservar el índice y evitar reconstruirlo cada vez que se inicia la aplicación. También implementaría controles de acceso para proteger los documentos y las credenciales de la API. En segundo lugar, prepararía un conjunto de evaluación más amplio con preguntas respondibles, preguntas fuera de contexto y preguntas que requieran combinar fuentes, midiendo tanto la calidad de la recuperación como la corrección de las respuestas. Además, incorporaría observabilidad para registrar latencia, errores, fragmentos recuperados, uso de tokens y costos. Finalmente, establecería límites de consumo y evaluaciones periódicas para detectar cambios en el rendimiento y mantener la fiabilidad del sistema.
