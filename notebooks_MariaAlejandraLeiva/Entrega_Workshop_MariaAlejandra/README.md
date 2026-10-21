@@ -1,8 +1,8 @@
 # Workshop RAG · SI3003 Inteligencia Artificial
 
-- **Nombre:** …
-- **Código estudiantil:** …
-- **Usuario de GitHub:** …
+- **Nombre:** Maria Alejandra Leiva
+- **Código estudiantil:** 1000303844
+- **Usuario de GitHub:** alejaleiva12
 - **Fecha:** 21 de octubre de 2026
 - **Entrega a:** jipadillab@eafit.edu.co
 
