@@ -69,9 +69,33 @@ Configuración base del notebook: chunk_size=900, overlap=120, k=5, score_thresh
 - La configuración del notebook (900, k=5, threshold=0.25) es suficiente para este corpus; no encontré una mejor en estas pruebas.
 - Limitación: solo 5 preguntas, así que las diferencias de aciertos son pequeñas o nulas.
 
-### B3 · Preguntas trampa (pendiente)
+### B3 · Preguntas trampa
 
-### B4 · Preguntas en español (pendiente)
+Preguntas escritas sobre temas que no están en los papers. Objetivo: comprobar si el RAG admite que no sabe o inventa.
+
+| # | Pregunta | Respuesta del RAG (resumen) | Clasificación |
+|---|---|---|---|
+| T1 | ¿Qué accuracy logró RAG en clasificación de ImageNet? | Los extractos no mencionan ImageNet | Admite que no sabe |
+| T2 | ¿Qué BLEU logró RAG-Token en WMT 2020 alemán-inglés? | Los extractos no tienen resultados de WMT 2020 | Admite que no sabe |
+| T3 | ¿Quién es el autor del reporte técnico de GPT-4? | Los extractos no contienen información sobre GPT-4 | Admite que no sabe |
+
+**Cambios de prompt:** ninguno. Ninguna respuesta inventó datos, así que no fue necesario modificar el prompt del sistema.
+
+**Observación:** las respuestas mencionan "excerpts", lo que muestra que el modelo solo ve los fragmentos recuperados y no el paper completo. Eso explica por qué un RAG depende de la calidad de la recuperación.
+
+### B4 · Preguntas en español
+
+Traduje Q1, Q3 y Q4 al español y comparé con la versión en inglés usando el índice de 900 (k=5, threshold=0.25).
+
+| Pregunta | Chunks del paper correcto (ES) | Respuesta (ES) vs. EN | Observación |
+|---|---|---|---|
+| Q1 · BLEU Transformer big (WMT14 EN-DE) | 5/5 de attention_paper.pdf | Igual de buena (28.4) | Recuperación sin pérdida |
+| Q3 · Factor sqrt(dk) | 5/5 de attention_paper.pdf | Igual de buena | La respuesta en español explica el mismo mecanismo |
+| Q4 · Variantes RAG-Sequence y RAG-Token | 5/5 de rag_paper.pdf | Igual de buena | Respuesta más larga que en inglés |
+
+**Hipótesis:** nemotron-3-embed-1b es multilingüe, así que la similitud entre una pregunta en español y un chunk en inglés sigue siendo suficiente para recuperar el paper correcto. La respuesta sale en español porque el prompt pide responder en el idioma de la pregunta.
+
+**Cómo lo comprobaría:** compararía los scores de similitud de la misma pregunta en ambos idiomas (con `similarity_search_with_score`) y miraría si el orden de los chunks cambia. Si el score cae mucho en español, la hipótesis sobre el modelo multilingüe no se sostiene del todo.
 
 ### B5 · Quiz propio (pendiente)
 
