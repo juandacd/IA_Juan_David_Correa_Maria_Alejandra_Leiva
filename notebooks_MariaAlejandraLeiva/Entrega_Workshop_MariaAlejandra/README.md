@@ -87,6 +87,12 @@ Esto conecta con Qdrant (y Weaviate) porque `IndexFlatIP` no tiene borrado y la 
 2. Eso es solo aritmética. Además hay que leer 10⁶ × 768 × 4 B ≈ 3 GB por consulta, unos 300 GB/s de ancho de banda a 100 consultas/s. El costo crece linealmente con N, así que ser exacto no escala. (El dato de memoria es un cálculo mío; verifícalo antes de incluirlo.)
 3. En ANN se sacrifica la garantía de exactitud, con un recall típico de ~95 % o más, y se gana latencia de órdenes de magnitud, unas 10.000 veces más rápido según la presentación.
 
+## Bloque A · App RAG empresarial
+
+## A1
+
+Tabla de 5 preguntas con respuesta y fuentes:
+
 user: ¿Cuál es el precio del plan Enterprise de CloudSync Pro?
 
 assistant: El plan Enterprise de CloudSync Pro cuesta $49/mes por usuario con compromiso anual.
