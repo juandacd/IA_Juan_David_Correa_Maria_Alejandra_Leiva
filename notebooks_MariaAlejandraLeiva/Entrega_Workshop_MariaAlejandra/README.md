@@ -177,24 +177,44 @@ Los scores ayudan a distinguir las fuentes más relacionadas con la pregunta, pe
 
 Ver imagen A4_scores.
 
-## Reflexión
+## Bloque B · RAG sobre papers académicos
 
-### 1. ¿Qué ocurrió cuando el contexto no contenía información suficiente? ¿El modelo reconoció la limitación o inventó?
+### B1
 
-En las pruebas sobre el salario mensual del gerente general y la empresa de seguros médicos de NovaTech, el modelo respondió: «No encuentro esa información en los documentos». Esto muestra que, con el prompt de A3, reconoció que no tenía información suficiente para responder y no inventó datos específicos. Sin embargo, en A4 las fuentes recuperadas para esas preguntas obtuvieron scores de hasta 0.3591 y 0.3710, respectivamente, lo que demuestra que recuperar documentos similares no garantiza que estos contengan la respuesta.
+| Pregunta | ¿Respuesta correcta? | ¿Se recuperó el contexto del paper correcto? | Observación |
+|---|---|---|---|
+| Q1. BLEU del Transformer grande | Sí | Sí, `attention_paper.pdf` | Respondió 28.4 BLEU para WMT 2014 inglés-alemán. |
+| Q2. Memoria paramétrica y no paramétrica en RAG | Sí | Sí, `rag_paper.pdf` | Explicó el papel del generador BART y del índice denso recuperado mediante DPR. |
+| Q3. Propósito de `1/sqrt(d_k)` | Sí | Sí, `attention_paper.pdf` | Explicó que el escalado evita productos punto demasiado grandes y gradientes muy pequeños en la softmax. |
+| Q4. Variantes RAG-Sequence y RAG-Token | Sí | Sí, `rag_paper.pdf` | Diferenció el uso de un mismo documento para toda la secuencia frente a documentos diferentes por token. |
+| Q5. Cabezas de atención y dimensiones | Sí | Sí, `attention_paper.pdf` | Indicó 8 cabezas y dimensiones `d_k = d_v = 64` por cabeza. |
+| Bonus. Generador de RAG y arquitectura Transformer | Sí | Sí, aparecieron ambos papers | Se recuperaron cuatro fragmentos de `rag_paper.pdf` y uno de `attention_paper.pdf`. |
 
-### 2. ¿Qué fragmentos se recuperaron para la pregunta bonus? ¿Aparecieron ambos papers?
+### B2
 
-**[Completar con los resultados del notebook 03.]** Para responder esta pregunta es necesario revisar cuál fue la pregunta bonus, qué fragmentos recuperó el sistema y cuáles eran los dos papers esperados. Con esos resultados se podrá determinar si aparecieron ambos papers y si los fragmentos recuperados contenían información relevante para responder.
+| Experimento | Configuración | Número de chunks del índice | Aciertos |
+|---|---|---:|---:|
+| `chunk_size` | 400, `overlap=52` | 412 | 5/5 |
+| `chunk_size` | 900, `overlap=120` | 150 | 5/5 |
+| `chunk_size` | 1500, `overlap=195` | 150 | 5/5 |
+| `k` | 3 | 150 | 5/5 |
+| `k` | 5 | 150 | 5/5 |
+| `k` | 8 | 150 | 5/5 |
+| `score_threshold` | 0.15 | 150 | 5/5 |
+| `score_threshold` | 0.25 | 150 | 5/5 |
+| `score_threshold` | 0.40 | 150 | 5/5 |
 
-### 3. ¿Qué efecto tuvo modificar `chunk_size`, `chunk_overlap`, `k` o `score_threshold`?
+### B3
 
-En A4 observé que las fuentes correctas de las tres preguntas respondibles obtuvieron scores de 0.4210, 0.4530 y 0.6239. Por otro lado, las dos preguntas fuera de contexto recuperaron fuentes con scores máximos de 0.3591 y 0.3710, aunque esas fuentes no respondían las preguntas. Por esta razón, propuse aumentar `score_threshold` de 0.30 a 0.40 para filtrar recuperaciones menos relevantes; este valor es una propuesta basada en las cinco pruebas y necesita validarse con más preguntas. Los experimentos realizados no permiten afirmar que haya medido directamente el efecto de cambiar `chunk_size`, `chunk_overlap` o `k`.
+| Experimento | Configuración | Aciertos | Observación |
+|---|---|---:|---|
+| `score_threshold` | 0.80 | 1/5 | El umbral fue demasiado estricto y redujo la recuperación a un promedio de 0.4 fragmentos por pregunta. |
 
-### 4. ¿Por qué conviene separar el modelo de embeddings del modelo generativo?
 
-El modelo de embeddings convierte las preguntas y los fragmentos de los documentos en representaciones vectoriales que permiten buscar información semánticamente relacionada. El modelo generativo utiliza la pregunta y el contexto recuperado para construir una respuesta en lenguaje natural. Separarlos permite elegir o cambiar cada modelo según su función, evaluar la recuperación y la generación por separado y buscar un equilibrio entre calidad, velocidad y costo.
+### B4
 
-### 5. ¿Qué cambiarías para llevar este prototipo a producción? Considera persistencia, control de acceso, evaluación, observabilidad y costos.
-
-Para llevar el prototipo a producción, utilizaría una base vectorial persistente para conservar los documentos indexados entre sesiones y establecería controles de acceso para evitar que cada usuario consulte información no autorizada. También crearía un conjunto de preguntas de evaluación con respuestas esperadas para medir la calidad de la recuperación, la precisión de las respuestas y la capacidad del sistema para reconocer preguntas fuera de contexto. Finalmente, registraría métricas de latencia, errores, uso de tokens y costos, protegería las claves de API y establecería límites de uso para mantener la aplicación segura y sostenible.
+| Pregunta en español | Fuente recuperada | ¿Respuesta correcta? | Observación |
+|---|---|---|---|
+| ¿Cuál fue la puntuación BLEU del Transformer grande en WMT 2014 inglés-alemán? | `attention_paper.pdf` | Sí | Respondió 28.4 BLEU. |
+| ¿Cuál es el propósito del factor de escala `sqrt(d_k)`? | `attention_paper.pdf` | Sí | Explicó el efecto de los productos punto grandes sobre la softmax y sus gradientes. |
+| ¿Qué dos variantes de RAG propone el paper y en qué se diferencian? | `rag_paper.pdf` | Sí | Diferenció RAG-Sequence de RAG-Token. |
