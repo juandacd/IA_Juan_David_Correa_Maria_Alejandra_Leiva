@@ -101,4 +101,19 @@ Traduje Q1, Q3 y Q4 al español y comparé con la versión en inglés usando el 
 
 ---
 
-## Parte R · Reflexión (pendiente)
+## Parte R · Reflexión
+
+**R1. ¿Qué parámetro afectó más los resultados y por qué?**
+El parámetro que más cambió el número de chunks fue `k`, porque el retriever siempre devuelve exactamente ese número de fragmentos. Pasar de 3 a 8 aumentó los chunks sin mejorar los aciertos, que se mantuvieron en 5/5. `chunk_size` sí generó muchos más fragmentos al bajar a 400 (412 chunks), pero tampoco cambió los aciertos. El único parámetro que sí afectó la recuperación fue `score_threshold` en 0.80, donde los aciertos cayeron a 1/5.
+
+**R2. ¿Cuándo un RAG debe decir "no lo sé"? Cita tu prueba de B3.**
+Un RAG debe decir que no sabe cuando la respuesta no está en los fragmentos recuperados. En B3, las tres preguntas sobre ImageNet, WMT 2020 y el autor de GPT-4 recibieron respuestas que admitían no tener la información, sin inventar cifras. Eso es lo esperado, porque el modelo solo ve los extractos que el retriever le entrega, no el paper completo.
+
+**R3. ¿Por qué la búsqueda en español funcionó (o no) con papers en inglés? Cita B4.**
+En B4, las tres preguntas traducidas recuperaron los 5 fragmentos del paper correcto, y las respuestas fueron igual de buenas que en inglés. Mi hipótesis es que `nemotron-3-embed-1b` es multilingüe, así que la similitud entre una pregunta en español y un chunk en inglés basta para recuperar el paper correcto. Lo comprobaría comparando los scores de similitud de la misma pregunta en ambos idiomas.
+
+**R4. ¿Qué cambiarías del corpus o del prompt si el sistema fuera para una empresa real?**
+Cambiaría el corpus para incluir documentos con cifras y excepciones claras, como el de reembolsos, porque ahí las respuestas dependen de montos exactos. También revisaría el prompt para que cite el documento y la sección, no solo el título. Y probaría un umbral intermedio (entre 0.40 y 0.80) para evitar que el sistema pierda recuperaciones correctas.
+
+**R5. ¿Qué fue lo más difícil del workshop y cómo lo resolviste?**
+Lo más difícil fue el error 404 en la generación de B1, que se resolvió al volver a ejecutar la celda, y el 500 de NVIDIA en A2, que se solucionó reintentando. También me costó construir el experimento de B2 porque las funciones usaban nombres distintos a los del notebook (`Qdrant` en vez de `QdrantVectorStore`), así que tuve que adaptarlas.
