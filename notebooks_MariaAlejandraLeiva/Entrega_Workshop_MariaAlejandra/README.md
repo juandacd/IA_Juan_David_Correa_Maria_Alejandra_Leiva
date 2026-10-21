@@ -87,6 +87,26 @@ Esto conecta con Qdrant (y Weaviate) porque `IndexFlatIP` no tiene borrado y la 
 2. Eso es solo aritmética. Además hay que leer 10⁶ × 768 × 4 B ≈ 3 GB por consulta, unos 300 GB/s de ancho de banda a 100 consultas/s. El costo crece linealmente con N, así que ser exacto no escala. (El dato de memoria es un cálculo mío; verifícalo antes de incluirlo.)
 3. En ANN se sacrifica la garantía de exactitud, con un recall típico de ~95 % o más, y se gana latencia de órdenes de magnitud, unas 10.000 veces más rápido según la presentación.
 
+user: ¿Cuál es el precio del plan Enterprise de CloudSync Pro?
+
+assistant: El plan Enterprise de CloudSync Pro cuesta $49/mes por usuario con compromiso anual.
+
+user: ¿Cuántos días pueden trabajar remotamente los empleados?
+
+assistant: Hasta 3 días por semana, con aprobación del jefe directo.
+
+user: ¿Qué pasa con los reembolsos mayores a $100?
+
+assistant: Requieren aprobación del supervisor. Una vez aprobados, se procesan en 3 a 5 días hábiles al método de pago original.
+
+user: ¿Qué ocurre durante la primera semana de onboarding?
+
+assistant: Durante la primera semana se completan módulos obligatorios de seguridad, cumplimiento y cultura de la empresa.
+
+user: Cuales son los colores de la bandera de colombia?
+
+assistant: No tengo esa información en el contexto proporcionado.
+
 ## Cómo ejecutar mis notebooks
 
 1. Abre cada notebook de `notebooks/` en Google Colab.
