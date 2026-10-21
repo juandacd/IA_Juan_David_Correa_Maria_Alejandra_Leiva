@@ -19,12 +19,12 @@
 | A2 | Tu propio corpus de documentos | 6 | SI |
 | A3 | Ingeniería del prompt (antes y después) | 5 | SI |
 | A4 | Muestra el score de similitud en las fuentes | 5 | SI |
-| B1 | Ejecuta el RAG de papers y evalúa con el ground truth | 6 | ⬜ |
-| B2 | Experimentos con chunk_size, k y score_threshold | 8 | ⬜ |
-| B3 | Preguntas trampa: ¿el RAG admite que no sabe? | 6 | ⬜ |
-| B4 | Preguntas en español sobre papers en inglés | 5 | ⬜ |
-| B5 | Escribe tu propio quiz con ground truth | 5 | ⬜ |
-| R1 | Reflexión final con tus datos | 10 | ⬜ |
+| B1 | Ejecuta el RAG de papers y evalúa con el ground truth | 6 |  SI |
+| B2 | Experimentos con chunk_size, k y score_threshold | 8 |  SI |
+| B3 | Preguntas trampa: ¿el RAG admite que no sabe? | 6 |  SI |
+| B4 | Preguntas en español sobre papers en inglés | 5 |  SI |
+| B5 | Escribe tu propio quiz con ground truth | 5 |  SI |
+| R1 | Reflexión final con tus datos | 10 |  SI |
 
 **Autoevaluación:** 0 pts de núcleo + 0 pts de retos (tope 30) = **0 / 100** → bonificación estimada **0.00 / 0.50**.
 
