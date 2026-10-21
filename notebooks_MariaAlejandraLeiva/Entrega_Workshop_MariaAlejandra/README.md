@@ -113,6 +113,8 @@ user: Cuales son los colores de la bandera de colombia?
 
 assistant: No tengo esa información en el contexto proporcionado.
 
+Ver imagen A1_gradio.png
+
 ## Cómo ejecutar mis notebooks
 
 1. Abre cada notebook de `notebooks/` en Google Colab.
