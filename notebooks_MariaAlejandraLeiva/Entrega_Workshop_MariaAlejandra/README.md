@@ -133,7 +133,7 @@ Justificación de chunk_size y chunk_overlap: Se utilizó `chunk_size=400` y `ch
 
 Ver imagen A2_corpus.png
 
-###A 3
+### A3
 
 | Pregunta | Antes del cambio | Después del cambio | Análisis |
 |---|---|---|---|
@@ -147,6 +147,41 @@ La instrucción que tuvo mayor efecto observable fue la de citar el título de l
 
 En las tres respuestas evaluadas, el modelo no ignoró ninguna de las instrucciones principales: respondió en español, utilizó un máximo de tres oraciones y reconoció la ausencia de información cuando correspondía. Sin embargo, esta prueba no permite afirmar que nunca ignore las instrucciones en otras preguntas; solo muestra que las siguió en los tres casos evaluados.
 
+### A4
+
+## A4. Scores de similitud de las fuentes
+
+Se realizaron cinco pruebas: tres preguntas respondibles con los documentos de NovaTech y dos preguntas fuera de contexto. Para cada pregunta se registraron las tres fuentes recuperadas y sus scores de similitud.
+
+| Pregunta | Tipo | Fuente recuperada | Score |
+|---|---|---|---:|
+| ¿Quién debe aprobar un descuento comercial del 15 %? | Respondible | Política de descuentos comerciales | 0.4210 |
+| ¿Quién debe aprobar un descuento comercial del 15 %? | Respondible | Política de reembolso de gastos | 0.1400 |
+| ¿Quién debe aprobar un descuento comercial del 15 %? | Respondible | Política de reembolso de gastos | 0.0967 |
+| ¿Cuántos días por semana se permite trabajar de forma remota y quién lo aprueba? | Respondible | Política de trabajo remoto | 0.4530 |
+| ¿Cuántos días por semana se permite trabajar de forma remota y quién lo aprueba? | Respondible | Política de reembolso de gastos | 0.2395 |
+| ¿Cuántos días por semana se permite trabajar de forma remota y quién lo aprueba? | Respondible | Política de vacaciones | 0.2068 |
+| ¿Cuál es el horario de atención al cliente de NovaTech? | Respondible | Horario de atención al cliente | 0.6239 |
+| ¿Cuál es el horario de atención al cliente de NovaTech? | Respondible | Política de trabajo remoto | 0.4443 |
+| ¿Cuál es el horario de atención al cliente de NovaTech? | Respondible | Política de vacaciones | 0.3635 |
+| ¿Cuál es el salario mensual del gerente general de NovaTech? | Fuera de contexto | Política de descuentos comerciales | 0.3591 |
+| ¿Cuál es el salario mensual del gerente general de NovaTech? | Fuera de contexto | Política de trabajo remoto | 0.3524 |
+| ¿Cuál es el salario mensual del gerente general de NovaTech? | Fuera de contexto | Política de reembolso de gastos | 0.3486 |
+| ¿Qué empresa de seguros médicos utiliza NovaTech para sus empleados? | Fuera de contexto | Programa de capacitación | 0.3710 |
+| ¿Qué empresa de seguros médicos utiliza NovaTech para sus empleados? | Fuera de contexto | Política de vacaciones | 0.3559 |
+| ¿Qué empresa de seguros médicos utiliza NovaTech para sus empleados? | Fuera de contexto | Política de trabajo remoto | 0.3463 |
+
+ Umbral propuesto
+
+Se propone cambiar `score_threshold` de **0.30 a 0.40**.
+
+La fuente correcta con menor score entre las tres preguntas respondibles obtuvo 0.4210, mientras que el score más alto de las fuentes recuperadas para las dos preguntas fuera de contexto fue 0.3710. Por tanto, 0.40 queda entre ambos valores: conserva las fuentes correctas principales observadas y excluye las fuentes de las pruebas fuera de contexto en estos cinco casos.
+
+Este umbral es una propuesta inicial basada en una muestra pequeña. Debe validarse con más preguntas antes de considerarlo definitivo.
+
+### Conclusión
+
+Los scores ayudan a distinguir las fuentes más relacionadas con la pregunta, pero no garantizan que una fuente contenga la respuesta. En las pruebas realizadas, las preguntas fuera de contexto también recuperaron documentos con scores relativamente altos, por lo que establecer un umbral puede reducir recuperaciones poco relevantes. La evaluación se limita a las cinco preguntas utilizadas.
 
 ## Decisiones y aprendizajes
 
