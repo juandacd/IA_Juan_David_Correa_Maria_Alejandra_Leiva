@@ -24,6 +24,32 @@
 - Observación: la respuesta coincide con `doc-001`. La primera versión salió cortada al final; no se repitió.
 - Incidencia: una consulta devolvió `500 Failed to generate completions` del servicio de NVIDIA; se resolvió reintentando.
 
+## A4 · Score de similitud en las fuentes
+
+Evidencia: `evidencias/A4_scores.png`
+
+Usé `vectorstore.similarity_search_with_score(question, k=3)` sin aplicar el umbral, para ver qué habría recuperado el sistema sin filtrar.
+
+| Pregunta | Tipo | Score top 1 | Score top 2 | Score top 3 |
+|---|---|---|---|---|
+| ¿Cuántos días pueden trabajar remotamente los empleados? | buena | 0.396 (Política de trabajo remoto) | 0.373 (Política de trabajo remoto) | 0.177 (Política de contraseñas) |
+| ¿Cuál es el precio del plan Pro de CloudSync Pro? | buena | 0.611 (Planes y precios) | 0.411 (Planes y precios) | 0.168 (Planes y precios) |
+| ¿Qué reembolso aplica a gastos mayores a 2.000.000 COP? | buena | 0.476 (Política de reembolso) | 0.428 (Política de reembolso) | 0.288 (Planes y precios) |
+| ¿Cuál es la capital de Francia? | fuera de contexto | 0.076 | 0.046 | 0.036 |
+| ¿Cómo se cocina una pizza margarita? | fuera de contexto | 0.086 | 0.076 | 0.066 |
+
+**Observaciones:**
+- Las preguntas buenas tienen su mejor chunk entre 0.396 y 0.611. Las fuera de contexto quedan por debajo de 0.09.
+- En las preguntas buenas, los chunks de ruido (0.168 a 0.288) aparecen como fuentes aunque no tienen relación con la respuesta.
+
+**Umbral propuesto: `score_threshold = 0.30`**
+
+Justificación:
+- Todas las preguntas fuera de contexto quedan bajo 0.09, así que cualquier umbral entre 0.10 y 0.30 las rechaza.
+- Cada pregunta buena conserva al menos un chunk por encima de 0.39, así que 0.30 no corta la recuperación correcta.
+- 0.30 elimina los chunks de ruido de bajo score (0.168 y 0.177).
+- Limitación: con 5 preguntas, el valor es orientativo. La conclusión de B2 (0.15 a 0.40 no cambia los aciertos) indica que el umbral sirve para filtrar ruido, no para mejorar la recuperación.
+
 ---
 
 ## Parte B · RAG sobre papers académicos
