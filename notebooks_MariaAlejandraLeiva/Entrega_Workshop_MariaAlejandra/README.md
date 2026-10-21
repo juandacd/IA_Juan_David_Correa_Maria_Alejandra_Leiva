@@ -115,6 +115,24 @@ assistant: No tengo esa información en el contexto proporcionado.
 
 Ver imagen A1_gradio.png
 
+### A2
+
+| # | Pregunta | Respuesta obtenida del RAG | Fuente utilizada | ¿Correcta? |
+|---|---|---|---|---|
+| 1 | ¿Cuántos días por semana se permite trabajar remotamente en NovaTech y quién lo aprueba? | Hasta dos días por semana, y debe ser aprobado previamente por el supervisor directo. | `doc_01` — Política de trabajo remoto | Sí |
+| 2 | ¿Con cuánta anticipación se deben solicitar las vacaciones? | Al menos diez días calendario de anticipación. | `doc_02` — Política de vacaciones | Sí |
+| 3 | ¿Quién debe aprobar un descuento comercial del 15 %? | El gerente comercial. | `doc_04` — Política de descuentos comerciales | Sí |
+| 4 | ¿Cuál es el horario de atención al cliente de NovaTech? | El horario de atención al cliente de NovaTech es de lunes a viernes, de 8:00 a. m. a 5:00 p. m., hora de Colombia. | `doc_05` — Horario de atención al cliente | Sí |
+| 5 | ¿Cuál es el salario mensual del gerente general de NovaTech? | No dispongo de esa información. El contexto proporcionado no contiene detalles sobre los salarios del personal de NovaTech. | Ninguna fuente pertinente en el corpus | Sí |
+| 6 | ¿Qué compañía de seguros médicos tiene contratada NovaTech? | No tengo esa información en el contexto proporcionado. | Ninguna fuente pertinente en el corpus | Sí |
+| 7 | ¿Qué día de la semana es hoy? | No tengo esa información en el contexto proporcionado. | Ninguna fuente pertinente en el corpus | Sí |
+
+Análisis de resultados: De las preguntas que se pudieron evaluar, las cuatro preguntas respondibles obtuvieron respuestas correctas y las otras preguntas fuera de contexto fueron respondidas reconociendo que la información no estaba disponible en los documentos. Esto muestra que el sistema logró recuperar información pertinente para las preguntas cubiertas por el corpus y, en estos dos casos, evitó inventar información ausente. 
+
+Justificación de chunk_size y chunk_overlap: Se utilizó `chunk_size=400` y `chunk_overlap=40` porque los documentos del corpus son relativamente breves y describen políticas independientes. Este tamaño busca conservar las reglas junto con su contexto, mientras que el solapamiento permite mantener parte de la información contextual cuando un documento se divide en varios fragmentos.
+
+Ver imagen A2_corpus.png
+
 ## Cómo ejecutar mis notebooks
 
 1. Abre cada notebook de `notebooks/` en Google Colab.
