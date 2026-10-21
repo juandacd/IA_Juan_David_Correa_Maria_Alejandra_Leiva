@@ -149,8 +149,6 @@ En las tres respuestas evaluadas, el modelo no ignoró ninguna de las instruccio
 
 ### A4
 
-## A4. Scores de similitud de las fuentes
-
 Se realizaron cinco pruebas: tres preguntas respondibles con los documentos de NovaTech y dos preguntas fuera de contexto. Para cada pregunta se registraron las tres fuentes recuperadas y sus scores de similitud.
 
 | Pregunta | Tipo | Fuente recuperada | Score |
