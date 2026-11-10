@@ -56,18 +56,26 @@ Si PowerShell no deja activar el entorno, ejecuta antes: `Set-ExecutionPolicy -S
 **Mac / Linux:**
 ```bash
 
+# Descargar el repositorio
 git clone https://github.com/juandacd/IA_Juan_David_Correa_Maria_Alejandra_Leiva.git
 
+# Entrar a la carpeta del proyecto
 cd IA_Juan_David_Correa_Maria_Alejandra_Leiva
-
 cd Proyecto_Final
 
-python3 -m venv .venv
+# Verificar la versión de Python
+python3 --version
 
+# Crear y activar el entorno virtual
+python3 -m venv .venv
 source .venv/bin/activate
 
-pip install -r requirements.txt
+# Actualizar pip e instalar las dependencias
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 
+# Verificar que no existan conflictos entre dependencias
+python -m pip check
 ```
 
 ### 2. Poner la clave de NVIDIA (solo para el chat con el agente)
