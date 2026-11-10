@@ -236,6 +236,9 @@ Cómo se cuida el agente: tiene un máximo de vueltas y de consultas por pregunt
 - Solo se predice **el día siguiente**, y solo con datos de PM2.5 (no se consiguieron lluvia ni viento, por eso no se hizo la red bayesiana).
 - Los datos terminan en septiembre de 2026.
 
+## Participación del equipo
+Ambos integrantes trabajamos conjuntamente en el desarrollo del proyecto, desde la elección del tema hasta la implementación de la solución final. Ambos participamos en la búsqueda y comprensión de los datos, la toma de decisiones metodológicas, el diseño e implementación de los modelos predictivos, la construcción del agente LLM y el sistema RAG, el desarrollo del dashboard y la evaluación experimental. Asimismo, participamos en la interpretación de los resultados, la identificación de limitaciones y la documentación del proyecto. 
+
 ## Si algo falla
 
 | Problema | Qué hacer |
