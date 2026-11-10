@@ -1,0 +1,13 @@
+# Dependencias del proyecto (Python 3.10 a 3.13)
+pandas>=2.0
+numpy>=1.24
+xlrd>=2.0.1              # leer los .xls de SISAIRE
+scikit-learn>=1.3        # solo para calcular métricas (los modelos están escritos desde cero)
+plotly>=5.24
+gradio>=6.0              # dashboard
+openai>=1.40             # cliente de la API de NVIDIA (compatible con OpenAI)
+python-dotenv>=1.0       # leer la API key desde un archivo .env
+pypdf>=4.0               # leer los PDF del corpus
+sentence-transformers>=3.0   # embeddings del RAG
+faiss-cpu>=1.8           # índice de búsqueda del RAG
+matplotlib>=3.7          # solo para el notebook

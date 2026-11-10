@@ -1,0 +1,71 @@
+Parque Biblioteca | Línea base (mañana = hoy)
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[ 61  40   0]
+ [ 40 131   0]
+ [  0   0   0]]
+
+Parque Biblioteca | Naive Bayes
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[ 48  53   0]
+ [ 34 137   0]
+ [  0   0   0]]
+
+Parque Biblioteca | Naive Bayes + HMM
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[ 61  40   0]
+ [ 42 129   0]
+ [  0   0   0]]
+
+Santa Elena | Línea base (mañana = hoy)
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[248  10   0]
+ [ 10   4   0]
+ [  0   0   0]]
+
+Santa Elena | Naive Bayes
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[247  11   0]
+ [  8   6   0]
+ [  0   0   0]]
+
+Santa Elena | Naive Bayes + HMM
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[245  13   0]
+ [  8   6   0]
+ [  0   0   0]]
+
+Tráfico Centro | Línea base (mañana = hoy)
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[  7   8   0]
+ [  8 244   2]
+ [  0   2   1]]
+
+Tráfico Centro | Naive Bayes
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[  4  11   0]
+ [  4 246   4]
+ [  0   2   1]]
+
+Tráfico Centro | Naive Bayes + HMM
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[  4  11   0]
+ [  7 242   5]
+ [  0   2   1]]
+
+Villahermosa | Línea base (mañana = hoy)
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[104  35   0]
+ [ 35  97   1]
+ [  0   0   0]]
+
+Villahermosa | Naive Bayes
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[ 93  46   0]
+ [ 27 106   0]
+ [  0   0   0]]
+
+Villahermosa | Naive Bayes + HMM
+(filas = real, columnas = predicho: ['Buena', 'Moderada', 'Alerta'])
+[[110  29   0]
+ [ 39  93   1]
+ [  0   0   0]]

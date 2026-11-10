@@ -1,0 +1,16 @@
+# Claves y configuración personal
+.env
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Índice del RAG (se reconstruye solo)
+.cache/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

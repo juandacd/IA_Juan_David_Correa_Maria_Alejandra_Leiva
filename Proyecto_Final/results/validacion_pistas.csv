@@ -1,0 +1,9 @@
+config,accuracy,f1_presentes
+Línea base,0.826,0.567
+F: hoy+ayer+HMM+dia+mes,0.827,0.562
+G: hoy+HMM+mes,0.82,0.554
+D: hoy+ayer+HMM,0.826,0.552
+E: hoy+ayer+HMM+mes,0.816,0.552
+C: hoy+ayer+dia+mes,0.829,0.55
+B: hoy+ayer+mes,0.825,0.543
+A: hoy+ayer,0.827,0.503

@@ -1,0 +1,16 @@
+RESOLUCIÓN 2254 DE 2017 (MinAmbiente) - TABLAS DE PM2.5, transcritas a mano del PDF.
+
+Nivel máximo permisible de PM2.5 en 24 horas: 37 µg/m³, desde el 1 de julio de 2018 (Artículo 2, Parágrafo 1).
+
+Tabla 4. Niveles de prevención, alerta y emergencia para PM2.5 (promedio de 24 horas):
+- Nivel de Prevención: 38 - 55 µg/m³.
+- Nivel de Alerta: 56 - 150 µg/m³.
+- Nivel de Emergencia: 151 o más µg/m³.
+
+Tabla 6. Puntos de corte del Índice de Calidad del Aire (ICA) para PM2.5 (promedio de 24 horas):
+- ICA 0-50, color Verde, categoría Buena: PM2.5 de 0 - 12 µg/m³.
+- ICA 51-100, color Amarillo, categoría Aceptable: PM2.5 de 13 - 37 µg/m³.
+- ICA 101-150, color Naranja, categoría Dañina a la salud de grupos sensibles: PM2.5 de 38 - 55 µg/m³.
+- ICA 151-200, color Rojo, categoría Dañina a la salud: PM2.5 de 56 - 150 µg/m³.
+- ICA 201-300, color Púrpura, categoría Muy dañina a la salud: PM2.5 de 151 - 250 µg/m³.
+- ICA 301-500, color Marrón, categoría Peligrosa: PM2.5 de 251 - 500 µg/m³.

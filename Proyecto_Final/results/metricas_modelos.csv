@@ -1,0 +1,13 @@
+estacion,modelo,accuracy,f1_macro_3clases,f1_macro_presentes,dias_prueba,dias_alerta_prueba
+Parque Biblioteca,Línea base (mañana = hoy),0.706,0.457,0.685,272,0
+Parque Biblioteca,Naive Bayes,0.68,0.428,0.642,272,0
+Parque Biblioteca,Naive Bayes + HMM,0.699,0.452,0.678,272,0
+Santa Elena,Línea base (mañana = hoy),0.926,0.416,0.623,272,0
+Santa Elena,Naive Bayes,0.93,0.45,0.675,272,0
+Santa Elena,Naive Bayes + HMM,0.923,0.441,0.661,272,0
+Tráfico Centro,Línea base (mañana = hoy),0.926,0.587,0.587,272,3
+Tráfico Centro,Naive Bayes,0.923,0.519,0.519,272,3
+Tráfico Centro,Naive Bayes + HMM,0.908,0.494,0.494,272,3
+Villahermosa,Línea base (mañana = hoy),0.739,0.493,0.74,272,0
+Villahermosa,Naive Bayes,0.732,0.487,0.731,272,0
+Villahermosa,Naive Bayes + HMM,0.746,0.498,0.747,272,0
