@@ -238,9 +238,6 @@ Los resultados detallados y las limitaciones identificadas durante la evaluació
 - Las probabilidades del Naive Bayes son muy extremas (por ejemplo 99.6 %): tómalas como una estimación, no como certeza.
 - Solo se predice **el día siguiente**, y solo con datos de PM2.5 (no se consiguieron lluvia ni viento, por eso no se hizo la red bayesiana).
 - Los datos terminan en septiembre de 2026.
-- Las coordenadas del mapa son aproximadas.
-- Las tablas de la Resolución 2254 se leyeron con OCR y las de PM2.5 se verificaron a mano; el resto del OCR puede tener errores en cifras.
-- El agente puede equivocarse, y los modelos de lenguaje cambian entre ejecuciones. Las evaluaciones automáticas no detectan todo, por eso se complementaron con lectura manual.
 
 ## Si algo falla
 
