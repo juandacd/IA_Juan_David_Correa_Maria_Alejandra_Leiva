@@ -86,7 +86,7 @@ El agente usa modelos de lenguaje de NVIDIA, que tienen capa gratuita.
 2. Copia el archivo de ejemplo y pega tu clave:
    - Windows: `Copy-Item .env.example .env`
    - Mac / Linux: `cp .env.example .env`
-3. Abre el archivo `.env` y reemplaza `pega_aqui_tu_clave` por tu clave.
+3. Abre el archivo `.env` con el bloc de notas utilizando 'notepad .env' y reemplaza `pega_aqui_tu_clave` por tu clave.
 
 > **Sin clave el dashboard abre igual**: el mapa, las gráficas y la predicción funcionan. Solo el chat queda desactivado y avisa por qué.
 
