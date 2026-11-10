@@ -1,0 +1,4 @@
+
+# Archivos con claves privadas
+**/apikeys.env
+.env

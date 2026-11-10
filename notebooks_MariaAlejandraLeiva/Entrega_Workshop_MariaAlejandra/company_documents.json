@@ -1,0 +1,75 @@
+
+[
+  {
+    "id": "doc_01",
+    "title": "Política de trabajo remoto",
+    "content": "En NovaTech, los empleados pueden trabajar remotamente hasta dos días por semana. El trabajo remoto debe ser aprobado previamente por el supervisor directo. Los empleados deben estar disponibles durante el horario laboral y participar en las reuniones programadas. Los cargos que requieren atención presencial pueden tener condiciones diferentes.",
+    "metadata": {
+      "department": "recursos_humanos",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "doc_02",
+    "title": "Política de vacaciones",
+    "content": "Los empleados de NovaTech deben solicitar sus vacaciones con al menos diez días calendario de anticipación. La solicitud se presenta al jefe directo y requiere aprobación antes de reservar viajes. El equipo de recursos humanos registra los días aprobados y confirma las fechas al empleado.",
+    "metadata": {
+      "department": "recursos_humanos",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "doc_03",
+    "title": "Política de reembolso de gastos",
+    "content": "NovaTech reembolsa gastos laborales que tengan relación directa con las actividades autorizadas de la empresa. El empleado debe presentar el formulario de gastos y los recibos correspondientes dentro de los diez días hábiles posteriores al gasto. Los reembolsos superiores a 500000 pesos colombianos requieren aprobación del gerente del área. Finanzas revisa las solicitudes completas en un plazo de cinco días hábiles.",
+    "metadata": {
+      "department": "finanzas",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "doc_04",
+    "title": "Política de descuentos comerciales",
+    "content": "El equipo comercial de NovaTech puede ofrecer descuentos de hasta el 10 por ciento sin autorización adicional. Los descuentos superiores al 10 por ciento y de hasta el 20 por ciento requieren aprobación del gerente comercial. Cualquier descuento superior al 20 por ciento debe ser aprobado por la dirección financiera y la gerencia comercial. Todas las condiciones deben registrarse en la propuesta enviada al cliente.",
+    "metadata": {
+      "department": "ventas",
+      "type": "policy"
+    }
+  },
+  {
+    "id": "doc_05",
+    "title": "Horario de atención al cliente",
+    "content": "El equipo de atención al cliente de NovaTech presta servicio de lunes a viernes, de 8:00 a. m. a 5:00 p. m., hora de Colombia. Las solicitudes recibidas fuera de ese horario se registran y se atienden el siguiente día hábil. Los casos críticos reportados durante el horario de atención se asignan prioritariamente al equipo de soporte técnico.",
+    "metadata": {
+      "department": "servicio_al_cliente",
+      "type": "procedure"
+    }
+  },
+  {
+    "id": "doc_06",
+    "title": "Proceso de selección de personal",
+    "content": "El proceso de selección de NovaTech consta de cuatro etapas: revisión de la hoja de vida, entrevista inicial con recursos humanos, evaluación técnica cuando corresponda y entrevista final con el responsable del área. El equipo de recursos humanos comunica el resultado a los candidatos después de recibir la decisión final. La duración del proceso depende del cargo y de la disponibilidad de los entrevistadores.",
+    "metadata": {
+      "department": "recursos_humanos",
+      "type": "procedure"
+    }
+  },
+  {
+    "id": "doc_07",
+    "title": "Programa de capacitación",
+    "content": "Los nuevos empleados de NovaTech deben completar durante su primer mes una capacitación sobre seguridad de la información, protección de datos y herramientas internas. Cada módulo tiene una evaluación de conocimientos. El supervisor verifica que los módulos obligatorios estén completos y recursos humanos conserva el registro de participación.",
+    "metadata": {
+      "department": "recursos_humanos",
+      "type": "procedure"
+    }
+  },
+  {
+    "id": "doc_08",
+    "title": "Política de soporte técnico",
+    "content": "Los empleados deben registrar los incidentes tecnológicos en el portal interno de soporte de NovaTech. Cada solicitud debe incluir una descripción del problema, el equipo afectado y la fecha en que comenzó el incidente. El equipo de soporte clasifica los casos según su impacto en las operaciones. Los incidentes críticos tienen prioridad sobre las solicitudes rutinarias.",
+    "metadata": {
+      "department": "tecnologia",
+      "type": "procedure"
+    }
+  }
+]

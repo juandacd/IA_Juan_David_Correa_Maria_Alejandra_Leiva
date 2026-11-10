@@ -1,0 +1,38 @@
+[
+  {
+    "id": "doc-001",
+    "title": "Política de trabajo remoto",
+    "content": "La política de trabajo remoto de Nimbus Software S.A.S. permite a los colaboradores laborar desde casa un máximo de 3 días por semana. Los días remotos deben ser acordados con el líder del equipo y registrados en el sistema de asistencia antes del inicio de cada semana. Las solicitudes de más de 3 días remotos o de trabajo remoto en bloques de 2 o más días consecutivos requieren la aprobación escrita del jefe de área y de Recursos Humanos. Durante los primeros 90 días de ingreso, el máximo permitido es de 2 días remotos por semana.",
+    "metadata": {
+      "area": "RRHH",
+      "company": "Nimbus Software S.A.S."
+    }
+  },
+  {
+    "id": "doc-002",
+    "title": "Política de reembolso de gastos",
+    "content": "Los gastos menores a 500.000 COP solo requieren la aprobación del líder del equipo, mientras que los gastos entre 500.000 y 2.000.000 COP necesitan la aprobación del jefe de área y del coordinador de Finanzas. Los gastos superiores a 2.000.000 COP requieren además la autorización del director financiero y se tramitan como contratos menores. Las solicitudes de reembolso deben radicarse en el portal de gastos dentro de los 30 días calendario siguientes a la fecha del gasto, adjuntando la factura y el soporte de pago. Las solicitudes completas se pagan en un máximo de 8 días hábiles.",
+    "metadata": {
+      "area": "Finanzas",
+      "company": "Nimbus Software S.A.S."
+    }
+  },
+  {
+    "id": "doc-003",
+    "title": "Política de contraseñas y acceso a cuentas",
+    "content": "Las contraseñas de las cuentas corporativas de Nimbus Software S.A.S. deben tener un mínimo de 12 caracteres e incluir letras mayúsculas, minúsculas, números y símbolos. El cambio de contraseña es obligatorio cada 90 días y está prohibido reutilizar cualquiera de las 5 contraseñas anteriores. El acceso al correo corporativo, a los repositorios y a los paneles de nube exige autenticación multifactor (MFA) en el 100% de los casos, incluidos los perfiles de administrador. Tras 5 intentos fallidos de inicio de sesión, la cuenta se bloquea automáticamente y debe desbloquearse con una solicitud al área de TI. Las cuentas sin uso durante 15 días calendario se deshabilitan de forma preventiva.",
+    "metadata": {
+      "area": "TI",
+      "company": "Nimbus Software S.A.S."
+    }
+  },
+  {
+    "id": "doc-004",
+    "title": "Planes y precios de CloudSync Pro",
+    "content": "CloudSync Pro es la plataforma de sincronización de archivos de Nimbus Software S.A.S. y se comercializa en tres planes con precios mensuales por usuario. El plan Basic cuesta 19.900 COP por usuario al mes, incluye hasta 10 GB de almacenamiento y soporte por correo electrónico en horario laboral. El plan Pro cuesta 49.900 COP por usuario al mes, ofrece 100 GB de almacenamiento, acceso a la API, auditoría avanzada y soporte prioritario 24/7. El plan Enterprise tiene precio personalizado bajo cotización, incluye almacenamiento ilimitado, SSO corporativo, un gestor de cuenta dedicado y un SLA de disponibilidad del 99,9%. Los contratos anuales se cobran con un 15% de descuento y todos los precios se expresan en pesos colombianos sin IVA.",
+    "metadata": {
+      "area": "Producto",
+      "company": "Nimbus Software S.A.S."
+    }
+  }
+]
