@@ -84,7 +84,7 @@ El agente usa modelos de lenguaje de NVIDIA, que tienen capa gratuita.
 
 1. Crea una cuenta gratis en <https://build.nvidia.com> y genera una API key.
 2. Copia el archivo de ejemplo y pega tu clave:
-   - Windows: `copy .env.example .env`
+   - Windows: `Copy-Item .env.example .env`
    - Mac / Linux: `cp .env.example .env`
 3. Abre el archivo `.env` y reemplaza `pega_aqui_tu_clave` por tu clave.
 
@@ -246,8 +246,6 @@ Cómo se cuida el agente: tiene un máximo de vueltas y de consultas por pregunt
 | El agente dice que ningún modelo respondió | Los modelos gratuitos de NVIDIA cambian. Mira cuáles tienes en <https://build.nvidia.com> y ponlos en `.env` como `NVIDIA_MODELOS=modelo1,modelo2` (deben aceptar llamadas a herramientas) |
 | La primera vez "se queda pensando" | Está descargando el modelo de embeddings (~470 MB). Espera unos minutos |
 | "Puerto ocupado" | Usa `python app.py --puerto 8001` |
-| El mapa sale sin fondo | Cambia `ESTILO_MAPA` a `"white-bg"` en `src/dashboard.py` |
-| Algo más | Ejecuta `python scripts/smoke_test.py` y mira qué pieza dice `FALLA` |
 
 ## Uso de inteligencia artificial generativa
 
