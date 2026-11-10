@@ -2,7 +2,7 @@
 
 Proyecto final de **SI3003 – Inteligencia Artificial** (Universidad EAFIT, 2026-1).
 
-**Autores:** Aleja [COMPLETAR: apellidos] y Juan David Correa Duque · **Grupo:** [COMPLETAR: nombre del grupo]
+**Autores:** Maria Alejandra Leiva y Juan David Correa Duque · **Grupo:** Miercoles
 
 ---
 
@@ -28,11 +28,19 @@ Necesitas **Python 3.10 a 3.13** e internet (la primera vez se descarga un model
 
 **Windows (PowerShell):**
 ```powershell
-git clone https://github.com/[COMPLETAR: usuario]/[COMPLETAR: repositorio].git
-cd [COMPLETAR: repositorio]
+
+git clone https://github.com/juandacd/IA_Juan_David_Correa_Maria_Alejandra_Leiva.git
+
+cd IA_Juan_David_Correa_Maria_Alejandra_Leiva
+
+cd Proyecto_Final
+
 python -m venv .venv
+
 .venv\Scripts\Activate.ps1
+
 pip install -r requirements.txt
+
 ```
 Si PowerShell no deja activar el entorno, ejecuta antes: `Set-ExecutionPolicy -Scope Process RemoteSigned`.
 
@@ -177,7 +185,7 @@ Cómo se cuida el agente: tiene un máximo de vueltas y de consultas por pregunt
 
 ## Datos y uso responsable
 
-- **Fuente:** SISAIRE (Subsistema de Información sobre Calidad del Aire de Colombia, IDEAM), PM2.5 diario de las estaciones Parque Biblioteca, Santa Elena, Tráfico Centro y Villahermosa. Descargados el [COMPLETAR: fecha de descarga].
+- **Fuente:** SISAIRE (Subsistema de Información sobre Calidad del Aire de Colombia, IDEAM), PM2.5 diario de las estaciones Parque Biblioteca, Santa Elena, Tráfico Centro y Villahermosa. Descargados el 4 de Noviembre del 2026.
 - **Plan B del enunciado:** no usamos una API en tiempo real; trabajamos con históricos descargados. Por eso los datos llegan hasta el **30 de septiembre de 2026** y el dashboard predice a partir de la fecha base elegida, no del día de hoy. Para usarlo en tiempo real habría que conectar una fuente que actualice los datos.
 - Se descartó la estación *Almacén EPM*: su serie empieza en diciembre de 2023 y tiene más del 60 % de los días vacíos.
 - Son datos agregados de calidad del aire (no hay datos personales). Los documentos del corpus son públicos y se citan por su nombre y página.
