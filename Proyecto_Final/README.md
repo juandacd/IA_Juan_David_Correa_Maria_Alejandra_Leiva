@@ -185,7 +185,11 @@ Cómo se cuida el agente: tiene un máximo de vueltas y de consultas por pregunt
 
 ### Agente (15 preguntas fijas)
 
-`python scripts/evaluar_agente.py` prueba 15 preguntas (datos, predicción, documentos, una combinada, errores, seguridad y tres fuera de alcance) y guarda `results/evaluacion_agente.csv` con: si usó la herramienta correcta, si citó la fuente, si el contenido es correcto y si hay citas falsas. En nuestras dos ejecuciones finales: herramienta correcta **15/15**, contenido correcto **15/15** (revisión automática), citas falsas **0/15**. Esos resultados llegaron después de corregir problemas que la evaluación fue mostrando (ciclos de búsquedas, respuestas vacías, una cita inventada y una respuesta fuera de tema). Detalles y limitaciones en el informe (`docs/`).
+`python scripts/evaluar_agente.py` prueba 15 preguntas (datos, predicción, documentos, una combinada, errores, seguridad y tres fuera de alcance) y guarda `results/evaluacion_agente.csv` con: si usó la herramienta correcta, si citó la fuente, si el contenido es correcto y si hay citas falsas. En las dos ejecuciones realizadas durante el desarrollo del proyecto se obtuvieron los siguientes resultados: herramienta correcta **15/15**, contenido correcto **15/15** (revisión automática), citas falsas **0/15**. Esos resultados llegaron después de corregir problemas que la evaluación fue mostrando (ciclos de búsquedas, respuestas vacías, una cita inventada y una respuesta fuera de tema). 
+
+**Nota sobre la reproducibilidad:** el modelo de lenguaje puede generar respuestas ligeramente diferentes entre ejecuciones. Por esta razón, los tiempos, las citas y algunas métricas pueden variar. Los resultados de referencia corresponden a las ejecuciones realizadas por el equipo y no representan valores garantizados para todas las ejecuciones posteriores.
+
+Los resultados detallados y las limitaciones identificadas durante la evaluación se encuentran en el informe incluido en la carpeta `docs/`.
 
 > El modelo de lenguaje varía un poco entre ejecuciones, así que los números pueden cambiar levemente.
 
