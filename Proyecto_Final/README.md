@@ -76,6 +76,10 @@ El agente usa modelos de lenguaje de NVIDIA, que tienen capa gratuita.
 ### 3. (Recomendado) Probar que todo está bien
 
 ```bash
+# Prueba sin conexión con NVIDIA
+python scripts/smoke_test.py --sin-llm
+
+# Prueba completa, incluyendo el agente LLM
 python scripts/smoke_test.py
 ```
 Revisa cada pieza (datos, modelos, herramientas, documentos, buscador, dashboard y agente) y dice `OK` o `FALLA` con el motivo. Con `--sin-llm` no llama a NVIDIA.
