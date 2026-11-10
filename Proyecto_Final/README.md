@@ -225,7 +225,6 @@ Cómo se cuida el agente: tiene un máximo de vueltas y de consultas por pregunt
 
 - **Fuente:** SISAIRE (Subsistema de Información sobre Calidad del Aire de Colombia, IDEAM), PM2.5 diario de las estaciones Parque Biblioteca, Santa Elena, Tráfico Centro y Villahermosa. Descargados el 4 de Noviembre del 2026.
 - **Plan B del enunciado:** no usamos una API en tiempo real; trabajamos con históricos descargados. Por eso los datos llegan hasta el **30 de septiembre de 2026** y el dashboard predice a partir de la fecha base elegida, no del día de hoy. Para usarlo en tiempo real habría que conectar una fuente que actualice los datos.
-- Se descartó la estación *Almacén EPM*: su serie empieza en diciembre de 2023 y tiene más del 60 % de los días vacíos.
 - Son datos agregados de calidad del aire (no hay datos personales). Los documentos del corpus son públicos y se citan por su nombre y página.
 - **Documentos del corpus:** Resolución 2254 de 2017 (MinAmbiente); Informe de operación AMVA/SIATA 08-jul-2021 y Informe diario AMVA/SIATA 28-jul-2026 (`siata.gov.co/CalidadAire`); Directrices mundiales de la OMS sobre la calidad del aire 2021, resumen ejecutivo (OPS/OMS).
 
