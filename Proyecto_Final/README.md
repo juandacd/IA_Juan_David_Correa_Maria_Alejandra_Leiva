@@ -29,17 +29,26 @@ Necesitas **Python 3.10 a 3.13** e internet (la primera vez se descarga un model
 **Windows (PowerShell):**
 ```powershell
 
+# Descargar el repositorio
 git clone https://github.com/juandacd/IA_Juan_David_Correa_Maria_Alejandra_Leiva.git
 
+# Entrar a la carpeta del proyecto
 cd IA_Juan_David_Correa_Maria_Alejandra_Leiva
-
 cd Proyecto_Final
 
-python -m venv .venv
+# Verificar la versión de Python
+python --version
 
+# Crear y activar el entorno virtual
+python -m venv .venv
 .venv\Scripts\Activate.ps1
 
-pip install -r requirements.txt
+# Actualizar pip e instalar las dependencias
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+
+# Verificar que no existan conflictos entre dependencias
+python -m pip check
 
 ```
 Si PowerShell no deja activar el entorno, ejecuta antes: `Set-ExecutionPolicy -Scope Process RemoteSigned`.
