@@ -189,8 +189,6 @@ Cómo se cuida el agente: tiene un máximo de vueltas y de consultas por pregunt
 
 **Nota sobre la reproducibilidad:** el modelo de lenguaje puede generar respuestas ligeramente diferentes entre ejecuciones. Por esta razón, los tiempos, las citas y algunas métricas pueden variar. Los resultados de referencia corresponden a las ejecuciones realizadas por el equipo y no representan valores garantizados para todas las ejecuciones posteriores.
 
-Los resultados detallados y las limitaciones identificadas durante la evaluación se encuentran en el informe incluido en la carpeta `docs/`.
-
 > El modelo de lenguaje varía un poco entre ejecuciones, así que los números pueden cambiar levemente.
 
 ---
