@@ -17,7 +17,7 @@
 - Elegimos el tema y las 4 estaciones y decidimos mantener las 3 categorías (Buena, Moderada, Alerta).
 - Conseguimos y descargamos los datos de SISAIRE y los documentos del corpus.
 - Ejecutamos todo el código en Google Colab, revisamos los resultados y los reportamos tal como salieron (incluido que el modelo no supera a la línea base).
-- **Verificamos a mano contra el PDF** las tablas de la Resolución 2254 que el OCR leyó mal.
+- Verificamos a mano contra el PDF las tablas de la Resolución 2254 que el OCR leyó mal.
 - Ejecutamos la evaluación del agente, detectamos problemas (ciclos de búsquedas, respuestas vacías, una cita inventada y una respuesta fuera de tema) y decidimos las correcciones.
 
 ## 3. Cómo entendimos el trabajo
