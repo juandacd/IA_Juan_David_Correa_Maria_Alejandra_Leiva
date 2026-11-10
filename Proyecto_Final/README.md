@@ -46,11 +46,19 @@ Si PowerShell no deja activar el entorno, ejecuta antes: `Set-ExecutionPolicy -S
 
 **Mac / Linux:**
 ```bash
-git clone https://github.com/[COMPLETAR: usuario]/[COMPLETAR: repositorio].git
-cd [COMPLETAR: repositorio]
+
+git clone https://github.com/juandacd/IA_Juan_David_Correa_Maria_Alejandra_Leiva.git
+
+cd IA_Juan_David_Correa_Maria_Alejandra_Leiva
+
+cd Proyecto_Final
+
 python3 -m venv .venv
+
 source .venv/bin/activate
+
 pip install -r requirements.txt
+
 ```
 
 ### 2. Poner la clave de NVIDIA (solo para el chat con el agente)
@@ -83,13 +91,20 @@ Opciones: `--puerto 8000` (otro puerto), `--sin-navegador` (no abrir el navegado
 
 ### ¿Prefieres Google Colab?
 ```python
-!git clone https://github.com/[COMPLETAR: usuario]/[COMPLETAR: repositorio].git
-%cd [COMPLETAR: repositorio]
+
+!git clone https://github.com/juandacd/IA_Juan_David_Correa_Maria_Alejandra_Leiva.git
+
+%cd IA_Juan_David_Correa_Maria_Alejandra_Leiva/Proyecto_Final
+
 !pip install -q -r requirements.txt
+
 import os
 from google.colab import userdata
-os.environ["NVIDIA_API_KEY"] = userdata.get("NVIDIA_API_KEY")   # la clave guardada en los "Secrets" de Colab
+
+os.environ["NVIDIA_API_KEY"] = userdata.get("NVIDIA_API_KEY")
+
 !python app.py --share --sin-navegador
+
 ```
 
 ---
