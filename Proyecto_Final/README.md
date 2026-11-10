@@ -51,7 +51,7 @@ python -m pip install -r requirements.txt
 python -m pip check
 
 ```
-Si PowerShell no deja activar el entorno, ejecuta antes: `Set-ExecutionPolicy -Scope Process RemoteSigned`.
+Si PowerShell no deja activar el entorno, ejecuta antes: `Set-ExecutionPolicy -Scope Process RemoteSigned`. Luego vuelve a ejecutar: `.venv\Scripts\Activate.ps1`
 
 **Mac / Linux:**
 ```bash
